@@ -19,7 +19,8 @@ const config = {
 				bg: 'hsl(13, 100%, 96%)',
 				bgLight: '#dae4ff',
 				lightText: '#fff',
-				darkText: '#4b4b4b'
+				darkText: '#4b4b4b',
+				midText: '#929292'
 			}
 		}
 	},
