@@ -1,5 +1,5 @@
 <script>
-	import { vizList } from '../../constants';
+	import { VizList } from '../../constants';
 </script>
 
 <div class="px-2 space-x-2 w-auto">
@@ -12,7 +12,7 @@
 			id="viz-type"
 		>
 			<option selected>select type</option>
-			{#each vizList as viz}
+			{#each VizList as viz}
 				<option value={viz} class="text-darkText">{viz}</option>
 			{/each}
 		</select>
