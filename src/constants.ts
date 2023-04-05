@@ -1,5 +1,5 @@
 import type { LatLngBoundsExpression } from 'leaflet';
-import type { vizType } from './interface';
+import type { iMapContants, vizType } from './interface';
 
 const VizList: vizType[] = ['choropleth'];
 
@@ -23,4 +23,9 @@ const PaneOrder: Record<string, string> = {
 	labelLayer: 'pane650'
 };
 
-export { VizList, MapboxConfig, MapBoundsMax, PaneOrder };
+const MapConstants: iMapContants = {
+	initialScale: 2,
+	initialCenter: [0, 0]
+};
+
+export { VizList, MapboxConfig, MapBoundsMax, PaneOrder, MapConstants };

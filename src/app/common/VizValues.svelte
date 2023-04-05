@@ -1,4 +1,4 @@
-<div class="px-2 space-x-2 w-full">
+<div class="px-2 space-y-2 w-full">
 	<label class="block uppercase tracking-wide text-midText text-xs font-bold" for="viz-values">
 		Values
 	</label>

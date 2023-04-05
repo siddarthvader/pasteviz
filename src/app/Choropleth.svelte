@@ -1,11 +1,11 @@
 <script>
 	import { onMount } from 'svelte';
-	import { MapBoundsMax, MapboxConfig, PaneOrder } from '../constants';
+	import { MapBoundsMax, MapConstants, MapboxConfig, PaneOrder } from '../constants';
 
 	let map;
 	onMount(async () => {
 		const L = await import('leaflet');
-		map = L.map('map').setView([0, 0], 8);
+		map = L.map('map').setView(MapConstants.initialCenter, MapConstants.initialScale);
 		map.createPane(PaneOrder.baseMap).style.zIndex = '250'; // basemap pane
 		map.createPane(PaneOrder.dataLayer).style.zIndex = '450'; // datalayer pane
 		map.createPane(PaneOrder.labelLayer).style.zIndex = '620'; // label layer pane

@@ -2,7 +2,7 @@
 	import { VizList } from '../../constants';
 </script>
 
-<div class="px-2 space-x-2 w-auto">
+<div class="px-2 space-y-2 w-auto">
 	<label class="block uppercase tracking-wide text-midText text-xs font-bold" for="viz-type">
 		Visualisation Type
 	</label>
@@ -11,7 +11,7 @@
 			class="block appearance-none w-full bg-bg border border-bgLight text-darkText p-1 rounded leading-tight focus:outline-none focus:bg-bg shadow-sm pr-6 focus:ring-primarySupLight focus:border-primarySupLight"
 			id="viz-type"
 		>
-			<option selected>select type</option>
+			<option selected>Select..</option>
 			{#each VizList as viz}
 				<option value={viz} class="text-darkText">{viz}</option>
 			{/each}
