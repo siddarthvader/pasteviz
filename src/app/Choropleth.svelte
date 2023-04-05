@@ -10,17 +10,10 @@
 		map.createPane(PaneOrder.dataLayer).style.zIndex = '450'; // datalayer pane
 		map.createPane(PaneOrder.labelLayer).style.zIndex = '620'; // label layer pane
 
-		// L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png ', {
-		// 	attribution:
-		// 		'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-		// 	maxZoom: 18
-		// }).addTo(map);
-
 		const baseMapLayer = L.tileLayer(
-			`https://api.mapbox.com/styles/v1/${MapboxConfig.username}/${MapboxConfig.styleID}/tiles/{z}/{x}/{y}?access_token={token}`,
+			`https://api.mapbox.com/styles/v1/${MapboxConfig.username}/${MapboxConfig.styleID}/tiles/{z}/{x}/{y}?access_token=${MapboxConfig.accessToken}`,
 			{
 				pane: PaneOrder.baseMap,
-				token: MapboxConfig.accessToken,
 				noWrap: true,
 				bounds: MapBoundsMax
 			}
@@ -28,10 +21,9 @@
 
 		// Label consiting only labels
 		const labelLayer = L.tileLayer(
-			`https://api.mapbox.com/styles/v1/${MapboxConfig.username}/${MapboxConfig.labelLayerstyleID}/tiles/{z}/{x}/{y}?access_token={token}`,
+			`https://api.mapbox.com/styles/v1/${MapboxConfig.username}/${MapboxConfig.labelLayerstyleID}/tiles/{z}/{x}/{y}?access_token=${MapboxConfig.accessToken}`,
 			{
 				pane: PaneOrder.labelLayer,
-				token: MapboxConfig.accessToken,
 				noWrap: true,
 				bounds: MapBoundsMax
 			}
