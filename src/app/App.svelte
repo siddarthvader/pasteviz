@@ -4,10 +4,10 @@
 	import VizSelector from './common/VizType.svelte';
 </script>
 
-<div class="w-[80%] m-auto p-6 flex items-start justify-center">
-	<VizSelector />
-	<VizInput />
-</div>
-<div class="w-[80%] m-auto p-6 flex items-start justify-center">
+<div class="flex m-auto w-[80%] border-bgLight border-x mt-6">
+	<div class="w-[37%] p-6 flex flex-col space-y-6 items-start border-r border-bgLight">
+		<VizSelector />
+		<VizInput />
+	</div>
 	<Choropleth />
 </div>

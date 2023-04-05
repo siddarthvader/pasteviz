@@ -23,7 +23,7 @@
 	/>
 </svelte:head>
 
-<div id="map" class="w-full h-[600px]" />
+<div id="map" class="w-full h-[600px] m-6" />
 
 <style>
 </style>
