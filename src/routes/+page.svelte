@@ -1,2 +1,7 @@
-<h1 class="text-red-300">Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import App from '../app/App.svelte';
+	import Header from '../header/Header.svelte';
+</script>
+
+<Header />
+<App />

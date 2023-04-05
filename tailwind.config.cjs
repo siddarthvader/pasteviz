@@ -10,14 +10,16 @@ const config = {
 		},
 		extend: {
 			colors: {
-				primary: 'hsl(12, 88%, 59%)',
-				primaryLight: 'hsl(12, 88%, 69%)',
-				primarySupLight: 'hsl(12, 88%, 95%)',
-				secondary: 'hsl(228, 39%, 23%)',
-				secondaryLight: 'hsl(227, 12%, 61%)',
-				secondaryDark: 'hsl(233, 12%, 13%)',
+				primary: '#3b5fc0',
+				primaryLight: '#4269d0',
+				primarySupLight: '#6384dd',
+				secondary: '#e14747',
+				secondaryLight: '#e84e4e',
+				secondaryDark: '#d14040',
 				bg: 'hsl(13, 100%, 96%)',
-				bgLight: 'hsl(0, 0%, 98%)'
+				bgLight: '#dae4ff',
+				primaryText: '#fff',
+				secondaryText: '#4b4b4b'
 			}
 		}
 	},
