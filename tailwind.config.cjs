@@ -18,8 +18,8 @@ const config = {
 				secondaryDark: '#d14040',
 				bg: 'hsl(13, 100%, 96%)',
 				bgLight: '#dae4ff',
-				primaryText: '#fff',
-				secondaryText: '#4b4b4b'
+				lightText: '#fff',
+				darkText: '#4b4b4b'
 			}
 		}
 	},
