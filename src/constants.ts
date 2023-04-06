@@ -1,7 +1,7 @@
 import type { LatLngBoundsExpression } from 'leaflet';
-import type { iMapContants, vizType } from './interface';
+import type { iMapContants, IVizType } from './interface';
 
-const VizList: vizType[] = ['choropleth'];
+const VizList: IVizType[] = ['choropleth'];
 
 const MapboxConfig: Record<string, string> = {
 	accessToken:

@@ -1,5 +1,10 @@
-<script>
+<script lang="ts">
 	import { VizList } from '../../constants';
+	import { viz_type } from '../../stores';
+
+	function vizTypeChange(e) {
+		viz_type.set(e.target.value);
+	}
 </script>
 
 <div class="px-2 space-y-2 w-auto">
@@ -10,6 +15,7 @@
 		<select
 			class="block appearance-none w-full bg-bg border border-bgLight text-darkText p-1 rounded leading-tight focus:outline-none focus:bg-bg shadow-sm pr-6 focus:ring-primarySupLight focus:border-primarySupLight"
 			id="viz-type"
+			on:change={vizTypeChange}
 		>
 			<option selected>Select..</option>
 			{#each VizList as viz}
