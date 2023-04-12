@@ -7,21 +7,13 @@
 	import VizSelector from './common/VizType.svelte';
 
 	async function vizSubmit() {
-		console.log('vizType is...', $viz_type);
-		console.log('vizValues is...', $viz_values);
-		console.log('vizKeys is...', $viz_keys);
-		console.log('vizRunning is...', $viz_running);
-		// TODO send all this data to API
-
-		const input = ['IND', 'Pakistan', 'Argentina', 'Italy', 'AUS'];
-
 		const res = await fetch(`http://localhost:3000/batch-geocode/`, {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ geo_locations: input })
+			body: JSON.stringify({ geo_locations: $viz_keys.split(',').map((item) => item.trim()) })
 		});
 		const json = await res.json();
 		const result = JSON.stringify(json);
