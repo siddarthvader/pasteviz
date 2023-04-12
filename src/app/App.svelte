@@ -1,4 +1,5 @@
 <script>
+	import { IVizRunning } from '../interface';
 	import { viz_keys, viz_running, viz_type, viz_values } from '../stores';
 	import Choropleth from './Choropleth.svelte';
 	import VizInput from './common/VizInput.svelte';
@@ -26,6 +27,7 @@
 		const result = JSON.stringify(json);
 
 		console.log('results is...', result);
+		viz_running.set(IVizRunning.Idle);
 	}
 </script>
 
