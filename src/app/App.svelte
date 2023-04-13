@@ -1,46 +1,20 @@
-<script lang="ts">
+<script lang="ts" async>
 	import { IVizRunning } from '../interface';
-	import { features_list, viz_keys, viz_running, viz_type, viz_values } from '../stores';
+	import { color_pallette, viz_keys, viz_running, viz_type, viz_values } from '../stores';
 	import Choropleth from './Choropleth.svelte';
 	import ColorPallette from './common/ColorPallette.svelte';
 	import VizInput from './common/VizInput.svelte';
 	import VizRun from './common/VizRun.svelte';
 	import VizSelector from './common/VizType.svelte';
-	import { batchGeoCode } from './helpers/api';
 
-	import type { geojson } from './helpers/types';
-	import type { Feature } from 'geojson';
+	import { customPaletteSet } from './helpers/color_pallette';
+	import { trimKeys, trimValues } from './helpers/helpers';
 
+	let renderChoropleth: () => Promise<void>;
 	async function vizSubmit() {
-		// Fetch geojson list from geocoding API
-		const geojsonList: geojson[] = await batchGeoCode($viz_keys);
+		// Dispatch an event to respective child component
 
-		const vizKeyList: string[] = $viz_keys.split(',').map((v) => v.trim());
-		const vizValuesList: string[] = $viz_values.split(',').map((v) => v.trim());
-
-		// Preparing keyvalue list
-		const keyValueMap: Record<string, number> = vizKeyList.reduce((f, key, index) => {
-			f[key] = Number(vizValuesList[index]) || 0;
-			return f;
-		}, {} as Record<string, number>);
-
-		// geting featureList from geojson types
-		const featureList: Feature[] = geojsonList.map((f) => {
-			return {
-				type: 'Feature',
-				geometry: f.geojson,
-
-				properties: {
-					value: keyValueMap[f.iso_name] || 0,
-					name: f.full_name,
-					iso_name: f.iso_name
-				}
-			};
-		});
-
-		// dispatching featurelist to store
-		features_list.set(featureList);
-
+		renderChoropleth();
 		viz_running.set(IVizRunning.Idle);
 	}
 </script>
@@ -58,5 +32,5 @@
 		</div>
 		<div class="text-midText text-sm px-1">* mapping of key-data is one to one wrt index</div>
 	</form>
-	<Choropleth />
+	<Choropleth bind:render={renderChoropleth} />
 </div>

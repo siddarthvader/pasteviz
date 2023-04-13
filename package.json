@@ -38,7 +38,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@types/d3-scale": "^4.0.3",
 		"@types/geojson": "^7946.0.10",
+		"d3-scale": "^4.0.2",
 		"leaflet": "^1.9.3"
 	}
 }

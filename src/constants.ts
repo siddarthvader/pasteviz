@@ -28,4 +28,15 @@ const MapConstants: iMapContants = {
 	initialCenter: [0, 0]
 };
 
-export { VizList, MapboxConfig, MapBoundsMax, PaneOrder, MapConstants };
+const DefaultColorPallette = 'customColorBrewer3';
+const DefaultDatalayerOpacity = '0.69';
+
+export {
+	VizList,
+	MapboxConfig,
+	MapBoundsMax,
+	PaneOrder,
+	MapConstants,
+	DefaultColorPallette,
+	DefaultDatalayerOpacity
+};

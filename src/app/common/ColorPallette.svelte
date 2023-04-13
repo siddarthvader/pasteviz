@@ -6,7 +6,6 @@
 	import ColorPalletteRow from './ColorPalletteRow.svelte';
 	let open: boolean = false;
 	function changeColorPallette(name: string) {
-		console.log('new color pallete is', name);
 		color_pallette.set(name);
 	}
 
@@ -57,7 +56,7 @@
 						class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9"
 						id="listbox-option-0"
 					>
-						<button on:click={(e) => changeColorPallette(pname)} class="w-full">
+						<button on:click|preventDefault={(e) => changeColorPallette(pname)} class="w-full">
 							<ColorPalletteRow colorPallette={customPaletteSet[pname]} />
 
 							{#if pname === $color_pallette}

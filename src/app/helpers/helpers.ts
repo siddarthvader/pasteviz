@@ -2,6 +2,8 @@ import type { Map, TileLayer } from 'leaflet';
 import { MapBoundsMax, MapboxConfig, PaneOrder } from '../../constants';
 import type { Feature } from 'geojson';
 
+import { scaleLinear, type ScaleThreshold, scaleThreshold } from 'd3-scale';
+
 async function initMap(map: Map): Promise<Map> {
 	const L = await import('leaflet');
 
@@ -39,4 +41,26 @@ async function addGeoJsonLayer(map: Map, geoJSON: Feature[]) {
 	L.geoJSON(geoJSON).addTo(map);
 }
 
-export { initMap, addGeoJsonLayer };
+function getDataDomainFromDatalayer(valuesList: number[], count: number): number[] {
+	return scaleLinear()
+		.domain([Math.min(...valuesList), Math.max(...valuesList)])
+		.ticks(count);
+}
+
+function getThreshold(
+	vizValuesList: number[],
+	colorPalette: string[]
+): ScaleThreshold<number, string> {
+	const dataDomain: number[] = getDataDomainFromDatalayer(vizValuesList, colorPalette.length);
+	const threshold: ScaleThreshold<number, string> = scaleThreshold();
+	threshold.domain(dataDomain).range(colorPalette);
+	return threshold;
+}
+
+function trimKeys(keyString: string): string[] {
+	return keyString.split(',').map((v) => v.trim());
+}
+function trimValues(valString: string): number[] {
+	return valString.split(',').map((v) => Number(v.trim()) || 0);
+}
+export { initMap, addGeoJsonLayer, getThreshold, trimKeys, trimValues };
