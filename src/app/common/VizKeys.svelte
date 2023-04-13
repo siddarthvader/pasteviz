@@ -16,6 +16,6 @@
 		rows="4"
 		class="block p-2.5 text-sm text-darkText bg-bg rounded-lg border border-bgLight focus:ring-primarySupLight focus:border-primarySupLight w-[100%]"
 		placeholder="Paste your Keys here, comma or space separated.... India, Argentina, AUS"
-		on:input={(e) => vizKeysChange}
+		on:input={vizKeysChange}
 	/>
 </div>

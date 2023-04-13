@@ -1,5 +1,5 @@
 import type { Geometry } from 'geojson';
-export type geojson = {
+export type geojsonLocal = {
 	iso_name: string;
 	full_name: string;
 	geojson: Geometry;

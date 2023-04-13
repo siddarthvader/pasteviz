@@ -15,7 +15,6 @@
 		// Dispatch an event to respective child component
 
 		renderChoropleth();
-		viz_running.set(IVizRunning.Idle);
 	}
 </script>
 

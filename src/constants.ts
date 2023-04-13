@@ -29,7 +29,7 @@ const MapConstants: iMapContants = {
 };
 
 const DefaultColorPallette = 'customColorBrewer3';
-const DefaultDatalayerOpacity = '0.69';
+const DefaultDatalayerOpacity = 69;
 
 export {
 	VizList,

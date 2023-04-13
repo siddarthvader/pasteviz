@@ -1,75 +1,28 @@
 <script lang="ts" async>
-	import { onMount } from 'svelte';
 	import type { Map } from 'leaflet';
+	import type { Layer, GeoJSON } from 'leaflet';
+	import type { ScaleThreshold } from 'd3-scale';
+	import type { Geometry, Feature } from 'geojson';
+	import type { PathOptions } from 'leaflet';
+
+	import { onMount } from 'svelte';
 	import { getThreshold, initMap, trimKeys, trimValues } from './helpers/helpers';
 	import { DefaultDatalayerOpacity, MapConstants } from '../constants';
-	import { features_list, viz_keys, viz_values, color_pallette } from '../stores';
-	import type { Layer } from 'leaflet';
-	import type { ScaleThreshold } from 'd3-scale';
-
-	import type { Feature } from 'geojson';
+	import { viz_keys, viz_values, color_pallette, viz_running } from '../stores';
 
 	import { batchGeoCode } from './helpers/api';
 	import { customPaletteSet } from './helpers/color_pallette';
+	import { IVizRunning } from '../interface';
 
-	let threshold: ScaleThreshold<number, string>;
-
-	export const render = async () => {
-		const keyList = trimKeys($viz_keys);
-		const valList = trimValues($viz_values);
-
-		console.log('keyList is...', keyList);
-
-		const geojsonList = await batchGeoCode(keyList);
-		const keyValueMap = keyList.reduce((f, key, index) => {
-			f[key] = Number(valList[index]) || 0;
-			return f;
-		}, {} as Record<string, number>);
-
-		const featureList = geojsonList.map((f) => {
-			return {
-				type: 'Feature',
-				geometry: f.geojson,
-
-				properties: {
-					value: keyValueMap[f.iso_name] || 0,
-					name: f.full_name,
-					iso_name: f.iso_name
-				}
-			};
-		});
-
-		threshold = getThreshold(valList, customPaletteSet[$color_pallette]);
-
-		console.log(' featureList is...', featureList);
-	};
+	export const render = renderFn;
 
 	let map: Map;
-
-	const onEachFeature = (feature: Feature, layer: Layer) => {
-		const name: string = feature.properties?.full_name;
-		const dtValue: number = feature.properties?.value;
-
-		layer.bindTooltip(`${name} - ${dtValue}`).openTooltip();
-	};
-
-	const setGeoLayerStyle = (feature: Feature) => {
-		// Set the style of every regioin on map, returns a style compatible with leaflet
-
-		const dtValue: number = feature.properties?.value;
-		const fillVal: string = threshold(dtValue);
-
-		return {
-			fillColor: fillVal,
-			fillOpacity: dtValue ? Number(DefaultDatalayerOpacity) / 100 : 0,
-			color: fillVal,
-			weight: 1
-		};
-	};
+	let geoJSONLayer: GeoJSON<any, Geometry>;
+	let threshold: ScaleThreshold<number, string>;
 
 	onMount(async () => {
 		const L = await import('leaflet');
-		const map: Map = L.map('map', { attributionControl: false }).setView(
+		map = L.map('map', { attributionControl: false }).setView(
 			MapConstants.initialCenter,
 			MapConstants.initialScale
 		);
@@ -79,20 +32,65 @@
 			})
 			.addTo(map);
 
-		// initializing map
 		await initMap(map);
 
-		const geoJSONLayer = L.geoJSON([], {
+		geoJSONLayer = L.geoJSON([], {
 			onEachFeature,
 			style: setGeoLayerStyle
-		});
-
-		// adding geojson to mappa
-
-		features_list.subscribe((val) => {
-			L.geoJSON(val).addTo(map);
-		});
+		}).addTo(map);
 	});
+
+	function onEachFeature(feature: Feature, layer: Layer) {
+		console.log('feature is...', feature);
+		const name: string = feature.properties?.full_name;
+		const dtValue: number = feature.properties?.value;
+
+		layer.bindTooltip(`${name} - ${dtValue}`).openTooltip();
+	}
+
+	function setGeoLayerStyle(feature): PathOptions {
+		const dtValue: number = feature.properties?.value;
+
+		const fillVal: string = threshold(dtValue);
+
+		console.log('fillval is...', fillVal);
+		return {
+			fillColor: fillVal,
+			fillOpacity: dtValue ? DefaultDatalayerOpacity / 100 : 0,
+			color: fillVal,
+			weight: 1
+		};
+	}
+
+	async function renderFn() {
+		const keyList = trimKeys($viz_keys);
+		const valList = trimValues($viz_values);
+
+		const geojsonList = await batchGeoCode(keyList);
+		const keyValueMap = keyList.reduce((f, key, index) => {
+			f[key.toLowerCase()] = Number(valList[index]) || 0;
+			return f;
+		}, {} as Record<string, number>);
+
+		const featureList = geojsonList.map((f) => {
+			return {
+				type: 'Feature',
+				geometry: f.geojson,
+				properties: {
+					value:
+						keyValueMap[f.iso_name.toLowerCase()] || keyValueMap[f.full_name.toLowerCase()] || 0,
+					full_name: f.full_name,
+					iso_name: f.iso_name
+				}
+			};
+		});
+
+		threshold = getThreshold(valList, customPaletteSet[$color_pallette]);
+
+		geoJSONLayer.clearLayers();
+		geoJSONLayer.addData(featureList);
+		viz_running.set(IVizRunning.Idle);
+	}
 </script>
 
 <svelte:head>
