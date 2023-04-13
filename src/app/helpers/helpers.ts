@@ -3,6 +3,8 @@ import { MapBoundsMax, MapboxConfig, PaneOrder } from '../../constants';
 import type { Feature } from 'geojson';
 
 async function initMap(map: Map): Promise<Map> {
+	const L = await import('leaflet');
+
 	map.createPane(PaneOrder.baseMap).style.zIndex = '250'; // basemap pane
 	map.createPane(PaneOrder.dataLayer).style.zIndex = '450'; // datalayer pane
 	map.createPane(PaneOrder.labelLayer).style.zIndex = '620'; // label layer pane
@@ -31,8 +33,10 @@ async function initMap(map: Map): Promise<Map> {
 	return map;
 }
 
-export function addGeoJsonLayer(L, map: Map, geoJSON: Feature[]) {
+async function addGeoJsonLayer(map: Map, geoJSON: Feature[]) {
+	const L = await import('leaflet');
+
 	L.geoJSON(geoJSON).addTo(map);
 }
 
-export { initMap };
+export { initMap, addGeoJsonLayer };

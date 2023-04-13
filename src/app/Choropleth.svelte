@@ -9,7 +9,15 @@
 
 	onMount(async () => {
 		const L = await import('leaflet');
-		const map: Map = L.map('map').setView(MapConstants.initialCenter, MapConstants.initialScale);
+		const map: Map = L.map('map', { attributionControl: false }).setView(
+			MapConstants.initialCenter,
+			MapConstants.initialScale
+		);
+		L.control
+			.attribution({
+				prefix: 'made in love with <a href="https://leafletjs.com/">Leaflet</a>'
+			})
+			.addTo(map);
 
 		// initializing map
 		await initMap(map);
@@ -26,8 +34,8 @@
 <svelte:head>
 	<link
 		rel="stylesheet"
-		href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-		integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+		href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+		integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
 		crossorigin=""
 	/>
 </svelte:head>

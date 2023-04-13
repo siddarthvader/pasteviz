@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { viz_keys } from '../../stores';
 
-	function vizKeysChange(e) {
-		viz_keys.set(e.target.value);
+	function vizKeysChange(e: Event) {
+		viz_keys.set((e.target as HTMLInputElement).value);
 	}
 </script>
 
@@ -16,6 +16,6 @@
 		rows="4"
 		class="block p-2.5 text-sm text-darkText bg-bg rounded-lg border border-bgLight focus:ring-primarySupLight focus:border-primarySupLight w-[100%]"
 		placeholder="Paste your Keys here, comma or space separated.... India, Argentina, AUS"
-		on:input={vizKeysChange}
+		on:input={(e) => vizKeysChange}
 	/>
 </div>

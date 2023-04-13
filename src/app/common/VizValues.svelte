@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { viz_values } from '../../stores';
 
-	function vizValuesChange(e) {
-		viz_values.set(e.target.value);
+	function vizValuesChange(e: Event) {
+		viz_values.set((e.target as HTMLInputElement).value);
 	}
 </script>
 

@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { VizList } from '../../constants';
+	import type { IVizType } from '../../interface';
 	import { viz_type } from '../../stores';
 
-	function vizTypeChange(e) {
-		viz_type.set(e.target.value);
+	function vizTypeChange(e: Event) {
+		viz_type.set((e.target as HTMLInputElement).value as IVizType);
 	}
 </script>
 

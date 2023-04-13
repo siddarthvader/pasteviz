@@ -2,10 +2,12 @@
 	import { IVizRunning } from '../interface';
 	import { features_list, viz_keys, viz_running, viz_type, viz_values } from '../stores';
 	import Choropleth from './Choropleth.svelte';
+	import ColorPallette from './common/ColorPallette.svelte';
 	import VizInput from './common/VizInput.svelte';
 	import VizRun from './common/VizRun.svelte';
 	import VizSelector from './common/VizType.svelte';
 	import { batchGeoCode } from './helpers/api';
+
 	import type { geojson } from './helpers/types';
 	import type { Feature } from 'geojson';
 
@@ -16,11 +18,13 @@
 		const vizKeyList: string[] = $viz_keys.split(',').map((v) => v.trim());
 		const vizValuesList: string[] = $viz_values.split(',').map((v) => v.trim());
 
+		// Preparing keyvalue list
 		const keyValueMap: Record<string, number> = vizKeyList.reduce((f, key, index) => {
 			f[key] = Number(vizValuesList[index]) || 0;
 			return f;
 		}, {} as Record<string, number>);
 
+		// geting featureList from geojson types
 		const featureList: Feature[] = geojsonList.map((f) => {
 			return {
 				type: 'Feature',
@@ -34,9 +38,8 @@
 			};
 		});
 
+		// dispatching featurelist to store
 		features_list.set(featureList);
-
-		// TODO make data and geojson plot on map
 
 		viz_running.set(IVizRunning.Idle);
 	}
@@ -49,6 +52,7 @@
 	>
 		<VizSelector />
 		<VizInput />
+		<ColorPallette />
 		<div class="self-end px-2">
 			<VizRun />
 		</div>
