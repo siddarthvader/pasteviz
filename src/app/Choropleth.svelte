@@ -8,7 +8,7 @@
 	import { onMount } from 'svelte';
 	import { getThreshold, initMap, trimKeys, trimValues } from './helpers/helpers';
 	import { DefaultDatalayerOpacity, MapConstants } from '../constants';
-	import { viz_keys, viz_values, color_pallette, viz_running } from '../stores';
+	import { viz_keys, viz_values, color_pallette, viz_running, opacity_values } from '../stores';
 
 	import { batchGeoCode } from './helpers/api';
 	import { customPaletteSet } from './helpers/color_pallette';
@@ -41,7 +41,6 @@
 	});
 
 	function onEachFeature(feature: Feature, layer: Layer) {
-		console.log('feature is...', feature);
 		const name: string = feature.properties?.full_name;
 		const dtValue: number = feature.properties?.value;
 
@@ -53,10 +52,9 @@
 
 		const fillVal: string = threshold(dtValue);
 
-		console.log('fillval is...', fillVal);
 		return {
 			fillColor: fillVal,
-			fillOpacity: dtValue ? DefaultDatalayerOpacity / 100 : 0,
+			fillOpacity: dtValue ? $opacity_values / 100 : 0,
 			color: fillVal,
 			weight: 1
 		};

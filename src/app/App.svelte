@@ -3,6 +3,7 @@
 	import { color_pallette, viz_keys, viz_running, viz_type, viz_values } from '../stores';
 	import Choropleth from './Choropleth.svelte';
 	import ColorPallette from './common/ColorPallette.svelte';
+	import OpacitySlider from './common/OpacitySlider.svelte';
 	import VizInput from './common/VizInput.svelte';
 	import VizRun from './common/VizRun.svelte';
 	import VizSelector from './common/VizType.svelte';
@@ -26,6 +27,7 @@
 		<VizSelector />
 		<VizInput />
 		<ColorPallette />
+		<OpacitySlider />
 		<div class="self-end px-2">
 			<VizRun />
 		</div>
