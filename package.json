@@ -38,6 +38,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@types/geojson": "^7946.0.10",
 		"leaflet": "^1.9.3"
 	}
 }

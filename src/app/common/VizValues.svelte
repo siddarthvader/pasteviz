@@ -15,7 +15,7 @@
 		id="viz-values"
 		rows="4"
 		class="block p-2.5 text-sm text-darkText bg-bg rounded-lg border border-bgLight focus:ring-primarySupLight focus:border-primarySupLight w-[100%]"
-		placeholder="Paste your Values here, comma or space separated....'10000','999','12'"
+		placeholder="Paste your Values here, comma or space separated....10000,999,1200000"
 		on:input={vizValuesChange}
 	/>
 </div>

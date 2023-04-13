@@ -1,36 +1,25 @@
-<script>
+<script lang="ts">
 	import { onMount } from 'svelte';
-	import { MapBoundsMax, MapConstants, MapboxConfig, PaneOrder } from '../constants';
+	import type { Map } from 'leaflet';
+	import { initMap } from './helpers/helpers';
+	import { MapConstants } from '../constants';
+	import { features_list, viz_keys } from '../stores';
 
-	let map;
+	let map: Map;
+
 	onMount(async () => {
 		const L = await import('leaflet');
-		map = L.map('map').setView(MapConstants.initialCenter, MapConstants.initialScale);
-		map.createPane(PaneOrder.baseMap).style.zIndex = '250'; // basemap pane
-		map.createPane(PaneOrder.dataLayer).style.zIndex = '450'; // datalayer pane
-		map.createPane(PaneOrder.labelLayer).style.zIndex = '620'; // label layer pane
+		const map: Map = L.map('map').setView(MapConstants.initialCenter, MapConstants.initialScale);
 
-		const baseMapLayer = L.tileLayer(
-			`https://api.mapbox.com/styles/v1/${MapboxConfig.username}/${MapboxConfig.styleID}/tiles/{z}/{x}/{y}?access_token=${MapboxConfig.accessToken}`,
-			{
-				pane: PaneOrder.baseMap,
-				noWrap: true,
-				bounds: MapBoundsMax
-			}
-		);
+		// initializing map
+		await initMap(map);
 
-		// Label consiting only labels
-		const labelLayer = L.tileLayer(
-			`https://api.mapbox.com/styles/v1/${MapboxConfig.username}/${MapboxConfig.labelLayerstyleID}/tiles/{z}/{x}/{y}?access_token=${MapboxConfig.accessToken}`,
-			{
-				pane: PaneOrder.labelLayer,
-				noWrap: true,
-				bounds: MapBoundsMax
-			}
-		);
+		// adding geojson to mappa
 
-		map.addLayer(baseMapLayer);
-		map.addLayer(labelLayer);
+		features_list.subscribe((val) => {
+			console.log(val);
+			L.geoJSON(val).addTo(map);
+		});
 	});
 </script>
 
