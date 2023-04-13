@@ -1,6 +1,111 @@
 import type { ColorPaletteSet } from './types';
 
 export const customPaletteSet: ColorPaletteSet = {
+	customColorBrewer3: ['#764785', '#6b6bc7', '#5799db', '#61b5d1', '#7eceba', '#9fdfaa', '#dfef8f'],
+	customColorBrewer4: ['#8a4272', '#c73d54', '#de4f20', '#e56e19', '#e89c30', '#f2bf5a', '#f0db75'],
+	customColorBrewer5: ['#5799db', '#61b5d1', '#7eceba', '#9fdfaa', '#dfef8f'],
+	customColorBrewer6: ['#de4f20', '#e56e19', '#e89c30', '#f2bf5a', '#f0db75'],
+	dataRangeColorBrewer1: ['#096', '#ffde33', '#ff9933', '#cc0033', '#660099', '#8378EA', '#9FE6B8'],
+	colorBlindSet: [
+		'#000000',
+		'#2271b2',
+		'#3db7e9',
+		'#f748a5',
+		'#359d73',
+		'#d55e00',
+		'#e69f00',
+		'#f0e442'
+	],
+	darkBlueColorShadePalette: ['#6699CC', '#88C3E8', '#336699'],
+	yellowOrangeColorShadePalette: ['#E9833A', '#F2A80D', '#EECE31', '#E06106'],
+	redColorShadePalette: ['#DA746C', '#EE8F84', '#BF4940'],
+	blueColorShadePalette: ['#7586D7', '#98ADEE', '#5366C6'],
+	greenColorShadePalette: ['#7BC681', '#9BE4A2', '#4B9B51'],
+	brownColorShadePalette: ['#C88B2C', '#E9BC63', '#965A4F'],
+	purpleColorShadePalette: ['#7F77D4', '#A298EE', '#665EBA'],
+	darkGreenColorShadePalette: ['#79C8B1', '#8EE1CE', '#45A185'],
+	pinkColorShadePalette: ['#ED82A6', '#F9B1D1', '#DB5783'],
+	dataRangeColorBrewer2: [
+		'#8378EA',
+		'#9FE6B8',
+		'#a0cbe8',
+		'#4e79a7',
+		'#096',
+		'#ffde33',
+		'#ff9933',
+		'#cc0033',
+		'#660099'
+	],
+	customColorBrewer1: ['#4e79a7', '#f28e2b', '#76b7b2', '#9c755f', '#b07aa1', '#edc948', '#484848'],
+	echartsDark11: [
+		'#dd6b66',
+		'#759aa0',
+		'#e69d87',
+		'#8dc1a9',
+		'#ea7e53',
+		'#eedd78',
+		'#73a373',
+		'#73b9bc',
+		'#7289ab',
+		'#91ca8c',
+		'#f49f42'
+	],
+	colorbrewerSetOne9: [
+		'#e41a1c',
+		'#377eb8',
+		'#4daf4a',
+		'#984ea3',
+		'#ff7f00',
+		'#ffff33',
+		'#a65628',
+		'#f781bf',
+		'#999999'
+	],
+	d3SchemeSet1: [
+		'#e41a1c',
+		'#377eb8',
+		'#4daf4a',
+		'#984ea3',
+		'#ff7f00',
+		'#ffff33',
+		'#a65628',
+		'#f781bf',
+		'#999999'
+	],
+	colorbrewerAccent8: [
+		'#7fc97f',
+		'#beaed4',
+		'#fdc086',
+		'#ffff99',
+		'#386cb0',
+		'#f0027f',
+		'#bf5b17',
+		'#666666'
+	],
+	echartsDefault11: [
+		'#c23531',
+		'#2f4554',
+		'#61a0a8',
+		'#d48265',
+		'#91c7ae',
+		'#749f83',
+		'#ca8622',
+		'#bda29a',
+		'#6e7074',
+		'#546570',
+		'#c4ccd3'
+	],
+
+	colorbrewerSetTwo8: [
+		'#66c2a5',
+		'#fc8d62',
+		'#8da0cb',
+		'#e78ac3',
+		'#a6d854',
+		'#ffd92f',
+		'#e5c494',
+		'#b3b3b3'
+	],
 	neutralColorPalette: [
 		'#8B6FAB',
 		'#8181E3',
@@ -139,15 +244,6 @@ export const customPaletteSet: ColorPaletteSet = {
 		'#98D147',
 		'#B8DF81'
 	],
-	darkBlueColorShadePalette: ['#6699CC', '#88C3E8', '#336699'],
-	yellowOrangeColorShadePalette: ['#E9833A', '#F2A80D', '#EECE31', '#E06106'],
-	redColorShadePalette: ['#DA746C', '#EE8F84', '#BF4940'],
-	blueColorShadePalette: ['#7586D7', '#98ADEE', '#5366C6'],
-	greenColorShadePalette: ['#7BC681', '#9BE4A2', '#4B9B51'],
-	brownColorShadePalette: ['#C88B2C', '#E9BC63', '#965A4F'],
-	purpleColorShadePalette: ['#7F77D4', '#A298EE', '#665EBA'],
-	darkGreenColorShadePalette: ['#79C8B1', '#8EE1CE', '#45A185'],
-	pinkColorShadePalette: ['#ED82A6', '#F9B1D1', '#DB5783'],
 	category20: [
 		'rgb(78,121,167)',
 		'rgb(160,203,232)',
@@ -182,17 +278,7 @@ export const customPaletteSet: ColorPaletteSet = {
 		'#bcbd22',
 		'#17becf'
 	],
-	d3SchemeSet1: [
-		'#e41a1c',
-		'#377eb8',
-		'#4daf4a',
-		'#984ea3',
-		'#ff7f00',
-		'#ffff33',
-		'#a65628',
-		'#f781bf',
-		'#999999'
-	],
+
 	echartsLight13: [
 		'#37A2DA',
 		'#32C5E9',
@@ -208,42 +294,7 @@ export const customPaletteSet: ColorPaletteSet = {
 		'#8378EA',
 		'#96BFFF'
 	],
-	echartsDark11: [
-		'#dd6b66',
-		'#759aa0',
-		'#e69d87',
-		'#8dc1a9',
-		'#ea7e53',
-		'#eedd78',
-		'#73a373',
-		'#73b9bc',
-		'#7289ab',
-		'#91ca8c',
-		'#f49f42'
-	],
-	echartsDefault11: [
-		'#c23531',
-		'#2f4554',
-		'#61a0a8',
-		'#d48265',
-		'#91c7ae',
-		'#749f83',
-		'#ca8622',
-		'#bda29a',
-		'#6e7074',
-		'#546570',
-		'#c4ccd3'
-	],
-	colorbrewerAccent8: [
-		'#7fc97f',
-		'#beaed4',
-		'#fdc086',
-		'#ffff99',
-		'#386cb0',
-		'#f0027f',
-		'#bf5b17',
-		'#666666'
-	],
+
 	colorbrewerPaired12: [
 		'#a6cee3',
 		'#1f78b4',
@@ -258,27 +309,7 @@ export const customPaletteSet: ColorPaletteSet = {
 		'#ffff99',
 		'#b15928'
 	],
-	colorbrewerSetOne9: [
-		'#e41a1c',
-		'#377eb8',
-		'#4daf4a',
-		'#984ea3',
-		'#ff7f00',
-		'#ffff33',
-		'#a65628',
-		'#f781bf',
-		'#999999'
-	],
-	colorbrewerSetTwo8: [
-		'#66c2a5',
-		'#fc8d62',
-		'#8da0cb',
-		'#e78ac3',
-		'#a6d854',
-		'#ffd92f',
-		'#e5c494',
-		'#b3b3b3'
-	],
+
 	colorbrewerSetThree12: [
 		'#8dd3c7',
 		'#ffffb3',
@@ -293,29 +324,7 @@ export const customPaletteSet: ColorPaletteSet = {
 		'#ccebc5',
 		'#ffed6f'
 	],
-	colorBlindSet: [
-		'#000000',
-		'#2271b2',
-		'#3db7e9',
-		'#f748a5',
-		'#359d73',
-		'#d55e00',
-		'#e69f00',
-		'#f0e442'
-	],
-	dataRangeColorBrewer1: ['#096', '#ffde33', '#ff9933', '#cc0033', '#660099', '#8378EA', '#9FE6B8'],
-	dataRangeColorBrewer2: [
-		'#8378EA',
-		'#9FE6B8',
-		'#a0cbe8',
-		'#4e79a7',
-		'#096',
-		'#ffde33',
-		'#ff9933',
-		'#cc0033',
-		'#660099'
-	],
-	customColorBrewer1: ['#4e79a7', '#f28e2b', '#76b7b2', '#9c755f', '#b07aa1', '#edc948', '#484848'],
+
 	customColorBrewer2: [
 		'#6b6bc7',
 		'#5799db',
@@ -329,9 +338,5 @@ export const customPaletteSet: ColorPaletteSet = {
 		'#e56e19',
 		'#de4f20',
 		'#c73d54'
-	],
-	customColorBrewer3: ['#764785', '#6b6bc7', '#5799db', '#61b5d1', '#7eceba', '#9fdfaa', '#dfef8f'],
-	customColorBrewer4: ['#8a4272', '#c73d54', '#de4f20', '#e56e19', '#e89c30', '#f2bf5a', '#f0db75'],
-	customColorBrewer5: ['#5799db', '#61b5d1', '#7eceba', '#9fdfaa', '#dfef8f'],
-	customColorBrewer6: ['#de4f20', '#e56e19', '#e89c30', '#f2bf5a', '#f0db75']
+	]
 };

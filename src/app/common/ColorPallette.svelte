@@ -15,7 +15,7 @@
 	}
 </script>
 
-<div class="px-2 space-y-2 w-auto">
+<div class="px-2 space-y-2 w-full">
 	<label class="block uppercase tracking-wide text-midText text-xs font-bold" for="viz-type">
 		Color Pallette
 	</label>
@@ -46,7 +46,7 @@
 		</button>
 		{#if open}
 			<ul
-				class="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+				class="z-100 mt-1 max-h-56 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm absolute"
 				tabindex="-1"
 				role="listbox"
 				aria-labelledby="listbox-label"
@@ -57,7 +57,7 @@
 						class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9"
 						id="listbox-option-0"
 					>
-						<button on:click={(e) => changeColorPallette(pname)}>
+						<button on:click={(e) => changeColorPallette(pname)} class="w-full">
 							<ColorPalletteRow colorPallette={customPaletteSet[pname]} />
 
 							{#if pname === $color_pallette}
