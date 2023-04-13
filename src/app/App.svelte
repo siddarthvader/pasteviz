@@ -1,24 +1,19 @@
-<script>
+<script lang="ts">
 	import { IVizRunning } from '../interface';
 	import { viz_keys, viz_running, viz_type, viz_values } from '../stores';
 	import Choropleth from './Choropleth.svelte';
 	import VizInput from './common/VizInput.svelte';
 	import VizRun from './common/VizRun.svelte';
 	import VizSelector from './common/VizType.svelte';
+	import { batchGeoCode } from './helpers/api';
+	import type { geojson } from './helpers/types';
 
 	async function vizSubmit() {
-		const res = await fetch(`http://localhost:3000/batch-geocode/`, {
-			method: 'POST',
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({ geo_locations: $viz_keys.split(',').map((item) => item.trim()) })
-		});
-		const json = await res.json();
-		const result = JSON.stringify(json);
+		// Fetch geojson list from geocoding API
+		const geojsonList: geojson[] = await batchGeoCode($viz_keys);
 
-		console.log('results is...', result);
+		// TODO make data and geojson plot on map
+
 		viz_running.set(IVizRunning.Idle);
 	}
 </script>
