@@ -38,6 +38,10 @@ const ScalePositionConstants: Record<string, ControlPosition> = {
 	BottomLeft: 'bottomleft'
 };
 
+const API_VARIABLES = {
+	URL: 'https://geocoding-api-git-main-siddarthvader.vercel.app'
+};
+
 export {
 	VizList,
 	MapboxConfig,
@@ -46,5 +50,6 @@ export {
 	MapConstants,
 	DefaultColorPallette,
 	DefaultDatalayerOpacity,
-	ScalePositionConstants
+	ScalePositionConstants,
+	API_VARIABLES
 };
