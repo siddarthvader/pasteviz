@@ -3,11 +3,18 @@
 	import type { Layer, GeoJSON } from 'leaflet';
 	import type { ScaleThreshold } from 'd3-scale';
 	import type { Geometry, Feature } from 'geojson';
-	import type { PathOptions } from 'leaflet';
+	import type { PathOptions, Control } from 'leaflet';
 
 	import { onMount } from 'svelte';
-	import { getThreshold, initMap, trimKeys, trimValues } from './helpers/helpers';
-	import { DefaultDatalayerOpacity, MapConstants } from '../constants';
+	import {
+		formatNumber,
+		getThreshold,
+		initLegend,
+		initMap,
+		trimKeys,
+		trimValues
+	} from './helpers/helpers';
+	import { MapConstants, ScalePositionConstants } from '../constants';
 	import { viz_keys, viz_values, color_pallette, viz_running, opacity_values } from '../stores';
 
 	import { batchGeoCode } from './helpers/api';
@@ -16,29 +23,68 @@
 
 	export const render = renderFn;
 
-	let map: Map;
+	let leafletMap: Map;
 	let geoJSONLayer: GeoJSON<any, Geometry>;
 	let threshold: ScaleThreshold<number, string>;
+	let legendWrapper: HTMLElement;
+	let legendControl: Control;
 
 	onMount(async () => {
 		const L = await import('leaflet');
-		map = L.map('map', { attributionControl: false }).setView(
+		leafletMap = L.map('map', { attributionControl: false }).setView(
 			MapConstants.initialCenter,
 			MapConstants.initialScale
 		);
+		legendControl = L.control({
+			position: ScalePositionConstants.BottomRight
+		});
 		L.control
 			.attribution({
 				prefix: 'made in love with <a href="https://leafletjs.com/">Leaflet</a>'
 			})
-			.addTo(map);
+			.addTo(leafletMap);
 
-		await initMap(map);
+		await initMap(leafletMap);
+		legendWrapper = await initLegend();
 
 		geoJSONLayer = L.geoJSON([], {
 			onEachFeature,
 			style: setGeoLayerStyle
-		}).addTo(map);
+		}).addTo(leafletMap);
 	});
+
+	function removeColorLegend() {
+		legendWrapper.innerHTML = '';
+	}
+
+	function generateLegend() {
+		const dataDomain: Array<number> = threshold.domain();
+
+		console.log('datadomian is...', dataDomain);
+
+		// removing the existing color legend
+		legendWrapper?.innerHTML && removeColorLegend();
+
+		legendControl.onAdd = () => {
+			for (let i = 0; i < dataDomain.length; i++) {
+				legendWrapper.innerHTML += `
+				<div class="flex items-center spacing-2">
+					
+				<div class="h-5 w-5 flex-shrink-0 inline-block mr-2" style="background:${threshold(
+					dataDomain[i] + 1
+				)}"></div>
+				<div>${formatNumber(dataDomain[i])} - ${
+					dataDomain[i + 1] ? formatNumber(dataDomain[i + 1]) : 'Max'
+				} </div>
+				</div>
+
+				`;
+			}
+			return legendWrapper;
+		};
+
+		legendControl.addTo(leafletMap);
+	}
 
 	function onEachFeature(feature: Feature, layer: Layer) {
 		const name: string = feature.properties?.full_name;
@@ -87,6 +133,7 @@
 
 		geoJSONLayer.clearLayers();
 		geoJSONLayer.addData(featureList);
+		generateLegend();
 		viz_running.set(IVizRunning.Idle);
 	}
 </script>

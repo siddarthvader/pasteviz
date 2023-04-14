@@ -7,6 +7,9 @@ dependencies:
   '@types/geojson':
     specifier: ^7946.0.10
     version: 7946.0.10
+  d3-format:
+    specifier: ^3.1.0
+    version: 3.1.0
   d3-scale:
     specifier: ^4.0.2
     version: 4.0.2
@@ -27,6 +30,9 @@ devDependencies:
   '@sveltejs/kit':
     specifier: ^1.5.0
     version: 1.15.4(svelte@3.58.0)(vite@4.2.1)
+  '@types/d3-format':
+    specifier: ^3.0.1
+    version: 3.0.1
   '@types/leaflet':
     specifier: ^1.9.3
     version: 1.9.3
@@ -482,6 +488,10 @@ packages:
 
   /@types/cookie@0.5.1:
     resolution: {integrity: sha512-COUnqfB2+ckwXXSFInsFdOAWQzCCx+a5hq2ruyj+Vjund94RJQd4LG2u9hnvJrTgunKAaax7ancBYlDrNYxA0g==}
+    dev: true
+
+  /@types/d3-format@3.0.1:
+    resolution: {integrity: sha512-5KY70ifCCzorkLuIkDe0Z9YTf9RR2CjBX1iaJG+rgM/cPP+sO+q9YdQ9WdhQcgPj1EQiJ2/0+yUkkziTG6Lubg==}
     dev: true
 
   /@types/d3-scale@4.0.3:

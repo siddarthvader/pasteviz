@@ -5,8 +5,10 @@
 	import { customPaletteSet } from '../helpers/color_pallette';
 	import ColorPalletteRow from './ColorPalletteRow.svelte';
 	let open: boolean = false;
+
 	function changeColorPallette(name: string) {
 		color_pallette.set(name);
+		open = false;
 	}
 
 	function openColorPallette() {

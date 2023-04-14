@@ -1,6 +1,4 @@
 <script lang="ts" async>
-	import { IVizRunning } from '../interface';
-	import { color_pallette, viz_keys, viz_running, viz_type, viz_values } from '../stores';
 	import Choropleth from './Choropleth.svelte';
 	import ColorPallette from './common/ColorPallette.svelte';
 	import OpacitySlider from './common/OpacitySlider.svelte';
@@ -8,13 +6,9 @@
 	import VizRun from './common/VizRun.svelte';
 	import VizSelector from './common/VizType.svelte';
 
-	import { customPaletteSet } from './helpers/color_pallette';
-	import { trimKeys, trimValues } from './helpers/helpers';
-
 	let renderChoropleth: () => Promise<void>;
 	async function vizSubmit() {
 		// Dispatch an event to respective child component
-
 		renderChoropleth();
 	}
 </script>

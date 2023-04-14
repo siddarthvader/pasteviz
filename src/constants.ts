@@ -1,4 +1,4 @@
-import type { LatLngBoundsExpression } from 'leaflet';
+import type { LatLngBoundsExpression, ControlPosition, Control } from 'leaflet';
 import type { iMapContants, IVizType } from './interface';
 
 const VizList: IVizType[] = ['choropleth'];
@@ -31,6 +31,13 @@ const MapConstants: iMapContants = {
 const DefaultColorPallette = 'customColorBrewer3';
 const DefaultDatalayerOpacity = 69;
 
+const ScalePositionConstants: Record<string, ControlPosition> = {
+	TopLeft: 'topleft',
+	TopRight: 'topright',
+	BottomRight: 'bottomright',
+	BottomLeft: 'bottomleft'
+};
+
 export {
 	VizList,
 	MapboxConfig,
@@ -38,5 +45,6 @@ export {
 	PaneOrder,
 	MapConstants,
 	DefaultColorPallette,
-	DefaultDatalayerOpacity
+	DefaultDatalayerOpacity,
+	ScalePositionConstants
 };
