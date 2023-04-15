@@ -44,6 +44,7 @@
 		"@types/geojson": "^7946.0.10",
 		"d3-format": "^3.1.0",
 		"d3-scale": "^4.0.2",
-		"leaflet": "^1.9.3"
+		"leaflet": "^1.9.3",
+		"svelte-preprocess": "^5.0.3"
 	}
 }
