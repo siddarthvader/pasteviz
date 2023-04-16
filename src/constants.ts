@@ -1,15 +1,20 @@
-import type { LatLngBoundsExpression, ControlPosition, Control } from 'leaflet';
+import type { LatLngBoundsExpression, ControlPosition } from 'leaflet';
 import type { iMapContants, IVizType } from './interface';
+
+import {
+	PUBLIC_MAPBOX_ACCESS_TOKEN,
+	PUBLIC_MAPBOX_LABEL_LAYER_ID,
+	PUBLIC_MAPBOX_STYLE_ID
+} from '$env/static/public';
 
 const VizList: IVizType[] = ['choropleth'];
 
 const MapboxConfig: Record<string, string> = {
-	accessToken:
-		'pk.eyJ1Ijoic2lkbWFwcGluZyIsImEiOiJjbDQ2dzFncnkwNGtrM2NuemNrcXJ3cGhrIn0.ErNhngTH5pvqgUcSlGl0fw',
+	accessToken: PUBLIC_MAPBOX_ACCESS_TOKEN,
 	tilesetID: 'mapbox.mapbox-streets-v8',
 	username: 'sidmapping',
-	styleID: 'cl8d0bmd6000914msd4qj8ez0',
-	labelLayerstyleID: 'cl8k7y1aw006c14qnwuj4l6q4'
+	styleID: PUBLIC_MAPBOX_STYLE_ID,
+	labelLayerstyleID: PUBLIC_MAPBOX_LABEL_LAYER_ID
 };
 
 const MapBoundsMax: LatLngBoundsExpression = [
