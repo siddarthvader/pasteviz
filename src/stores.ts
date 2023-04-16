@@ -9,6 +9,7 @@ export const viz_type = writable<IVizType>('');
 export const viz_keys = writable<IVizKeys>('');
 export const viz_values = writable<IVizValues>('');
 export const viz_running = writable<IVizRunning>(IVizRunning.Idle);
+
 export const features_list = writable<Feature[]>([]);
 
 export const color_pallette = writable<string>(DefaultColorPallette);

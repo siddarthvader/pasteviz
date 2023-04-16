@@ -4,10 +4,15 @@ import type { geojsonLocal } from './types';
 
 async function batchGeoCode(viz_keys: string[]) {
 	const res = await api.post<string, geojsonLocal[]>(
-		`${API_VARIABLES.URL}/batch-geocode`,
+		`${getAPIURL()}/batch-geocode`,
 		JSON.stringify({ geo_locations: viz_keys })
 	);
 	return res;
+}
+
+function getAPIURL() {
+	console.log(process.env.NODE_ENV);
+	return process.env.NODE_ENV == 'dev' ? API_VARIABLES.DEV_URL : API_VARIABLES.URL;
 }
 
 export { batchGeoCode };

@@ -39,7 +39,8 @@ const ScalePositionConstants: Record<string, ControlPosition> = {
 };
 
 const API_VARIABLES = {
-	URL: 'https://geocoding-api-git-main-siddarthvader.vercel.app'
+	URL: 'https://geocoding-api-git-main-siddarthvader.vercel.app',
+	DEV_URL: 'http://localhost:8080'
 };
 
 export {
