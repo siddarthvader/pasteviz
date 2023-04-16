@@ -1,28 +1,49 @@
 <script lang="ts">
 	import { IVizRunning } from '../../interface';
-	import { viz_running } from '../../stores';
 
-	let isRunning: boolean = false;
+	import {
+		color_pallette,
+		deploying,
+		opacity_values,
+		viz_keys,
+		viz_type,
+		viz_values
+	} from '../../stores';
 
-	viz_running.subscribe(() => {
-		isRunning = $viz_running === IVizRunning.Running;
+	let isDeploying: boolean = false;
+
+	deploying.subscribe(() => {
+		isDeploying = $deploying === IVizRunning.Running;
 	});
 
-	function vizRunChange() {
-		viz_running.update((prev) => {
+	function getDeploy() {
+		deploying.update((prev) => {
 			return prev === IVizRunning.Idle ? IVizRunning.Running : IVizRunning.Idle;
 		});
+
+		const queryParams = {
+			type: $viz_type,
+			keys: $viz_keys,
+			values: $viz_values,
+			color_pallette: $color_pallette,
+			opacity: $opacity_values.toString()
+		};
+
+		const encodedURLParams = new URLSearchParams(queryParams);
+
+		return `/deploy?${encodedURLParams}`;
 	}
 </script>
 
-<button
+<a
 	type="button"
-	class=" hover:primaryLight text-lightText font-bold py-1 px-4 rounded"
-	on:click={vizRunChange}
-	class:bg-primary={!isRunning}
-	class:bg-secondary={isRunning}
+	class=" hover:primaryLight text-lightText font-bold py-1 px-4 rounded disabled:bg-bgLight"
+	class:bg-primary={!isDeploying}
+	class:bg-secondary={isDeploying}
+	href={getDeploy()}
+	target="_blank"
 >
-	{#if !isRunning}
+	{#if !isDeploying}
 		Deploy
 	{:else}
 		<svg
@@ -44,4 +65,4 @@
 		</svg>
 		Stop
 	{/if}
-</button>
+</a>

@@ -71,7 +71,7 @@ function trimValues(valString: string): number[] {
 	return valString.split(',').map((v) => Number(v.trim()) || 0);
 }
 
-function formatNumber(d: number): number {
+function formatNumber(d: number): string {
 	return d < 999 ? format(',d')(d) : format('.3s')(d);
 }
 export { initMap, initLegend, addGeoJsonLayer, getThreshold, trimKeys, trimValues, formatNumber };

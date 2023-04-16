@@ -13,7 +13,7 @@
 		initMap,
 		trimKeys,
 		trimValues
-	} from './helpers/helpers';
+	} from './helpers/choropleth';
 	import { MapConstants, ScalePositionConstants } from '../constants';
 	import { viz_keys, viz_values, color_pallette, viz_running, opacity_values } from '../stores';
 
@@ -59,8 +59,6 @@
 
 	function generateLegend() {
 		const dataDomain: Array<number> = threshold.domain();
-
-		console.log('datadomian is...', dataDomain);
 
 		// removing the existing color legend
 		legendWrapper?.innerHTML && removeColorLegend();

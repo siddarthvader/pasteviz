@@ -1,4 +1,4 @@
-<script lang="ts" async>
+<script lang="ts">
 	import Choropleth from './Choropleth.svelte';
 	import ColorPallette from './common/ColorPallette.svelte';
 	import Deploy from './common/Deploy.svelte';
