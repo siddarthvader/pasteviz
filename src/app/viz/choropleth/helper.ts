@@ -1,5 +1,5 @@
 import type { Map, TileLayer } from 'leaflet';
-import { MapBoundsMax, MapboxConfig, PaneOrder } from '../../constants';
+import { MapBoundsMax, MapboxConfig, PaneOrder } from '../../../constants';
 import type { Feature } from 'geojson';
 
 import { format } from 'd3-format';
@@ -64,14 +64,7 @@ function getThreshold(
 	return threshold;
 }
 
-function trimKeys(keyString: string): string[] {
-	return keyString.split(',').map((v) => v.trim());
-}
-function trimValues(valString: string): number[] {
-	return valString.split(',').map((v) => Number(v.trim()) || 0);
-}
-
 function formatNumber(d: number): string {
 	return d < 999 ? format(',d')(d) : format('.3s')(d);
 }
-export { initMap, initLegend, addGeoJsonLayer, getThreshold, trimKeys, trimValues, formatNumber };
+export { initMap, initLegend, addGeoJsonLayer, getThreshold, formatNumber };

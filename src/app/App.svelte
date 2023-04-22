@@ -8,15 +8,14 @@
 	import VizSelector from './common/VizType.svelte';
 
 	import { VizComponentMap } from '../constants';
-	import type { IRenderFn } from './helpers/types';
+	import type { IRenderFn } from '../interface';
 
 	let renderFn: IRenderFn;
 	async function vizSubmit() {
 		// Dispatch an event to respective child component
+
 		renderFn && renderFn();
 	}
-
-	console.log($viz_type);
 </script>
 
 <div class="flex m-auto w-[87%] border-bgLight border-x h-[calc(100vh-100px)]">

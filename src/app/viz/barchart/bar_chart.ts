@@ -3,8 +3,35 @@
 // https://observablehq.com/@d3/bar-chart
 
 import * as d3 from 'd3';
+
+export type BarChartEntity = {
+	key: string;
+	value: string | number;
+};
+export type BarChartData = BarChartEntity[];
+
+export type BarChartOptions = {
+	x?: (d: BarChartEntity, i: number) => string | number;
+	y?: (d: BarChartEntity) => string | number;
+	title?: (d: BarChartEntity) => string;
+	marginTop?: number;
+	marginRight?: number;
+	marginBottom?: number;
+	marginLeft?: number;
+	width?: number;
+	height?: number;
+	xDomain?: string[];
+	xRange?: [number, number];
+	yType?: typeof d3.scaleLinear;
+	yDomain?: [number, number];
+	yRange?: [number, number];
+	xPadding?: number;
+	yFormat?: (d: number) => string;
+	yLabel?: string;
+	color?: string;
+};
 export default function BarChart(
-	data,
+	data: BarChartData,
 	{
 		x = (d, i) => i, // given d in data, returns the (ordinal) x-value
 		y = (d) => d, // given d in data, returns the (quantitative) y-value
@@ -24,7 +51,7 @@ export default function BarChart(
 		yFormat, // a format specifier string for the y-axis
 		yLabel, // a label for the y-axis
 		color = 'currentColor' // bar fill color
-	} = {}
+	}: BarChartOptions = {}
 ) {
 	// Compute values.
 	const X = d3.map(data, x);

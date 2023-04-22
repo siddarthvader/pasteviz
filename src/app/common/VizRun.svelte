@@ -23,7 +23,7 @@
 	class:bg-secondary={isRunning}
 >
 	{#if !isRunning}
-		Run
+		Generate
 	{:else}
 		<svg
 			aria-hidden="true"

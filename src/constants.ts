@@ -6,8 +6,8 @@ import {
 	PUBLIC_MAPBOX_LABEL_LAYER_ID,
 	PUBLIC_MAPBOX_STYLE_ID
 } from '$env/static/public';
-import Choropleth from './app/viz/Choropleth.svelte';
-import BarChart from './app/viz/BarChart.svelte';
+import Choropleth from './app/viz/choropleth/Choropleth.svelte';
+import BarChart from './app/viz/barchart/BarChart.svelte';
 import EmptyViz from './app/viz/EmptyViz.svelte';
 
 const VizList: IVizType[] = ['choropleth', 'barchart'];
