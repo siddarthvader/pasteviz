@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import Choropleth from '../../app/Choropleth.svelte';
+	import Choropleth from '../../app/viz/Choropleth.svelte';
 	import { fuelStoreFromURLParams } from '../../app/helpers/deploy';
 	import { viz_type, viz_values } from '../../stores';
 

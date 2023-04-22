@@ -18,7 +18,7 @@
 			id="viz-type"
 			on:change={vizTypeChange}
 		>
-			<option selected>Select..</option>
+			<option value="">Select..</option>
 			{#each VizList as viz}
 				<option value={viz} class="text-darkText">{viz}</option>
 			{/each}

@@ -13,13 +13,13 @@
 		initMap,
 		trimKeys,
 		trimValues
-	} from './helpers/choropleth';
-	import { MapConstants, ScalePositionConstants } from '../constants';
-	import { viz_keys, viz_values, color_pallette, viz_running, opacity_values } from '../stores';
+	} from '../helpers/choropleth';
+	import { MapConstants, ScalePositionConstants } from '../../constants';
+	import { viz_keys, viz_values, color_pallette, viz_running, opacity_values } from '../../stores';
 
-	import { batchGeoCode } from './helpers/api';
-	import { customPaletteSet } from './helpers/color_pallette';
-	import { IVizRunning } from '../interface';
+	import { batchGeoCode } from '../helpers/api';
+	import { customPaletteSet } from '../helpers/color_pallette';
+	import { IVizRunning } from '../../interface';
 
 	export const render = renderFn;
 
@@ -145,7 +145,7 @@
 	/>
 </svelte:head>
 
-<div id="map" class="w-full h-[600px] m-6" />
+<div id="map" class="w-full h-full" />
 
 <style>
 </style>
