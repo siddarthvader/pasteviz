@@ -6,20 +6,20 @@
 	import type { PathOptions, Control } from 'leaflet';
 
 	import { onMount } from 'svelte';
+	import { formatNumber, getThreshold, initLegend, initMap } from './helper';
+	import { MapConstants, ScalePositionConstants } from '../../../constants';
 	import {
-		formatNumber,
-		getThreshold,
-		initLegend,
-		initMap,
-		trimKeys,
-		trimValues
-	} from '../helpers/choropleth';
-	import { MapConstants, ScalePositionConstants } from '../../constants';
-	import { viz_keys, viz_values, color_pallette, viz_running, opacity_values } from '../../stores';
+		viz_keys,
+		viz_values,
+		color_pallette,
+		viz_running,
+		opacity_values
+	} from '../../../stores';
 
-	import { batchGeoCode } from '../helpers/api';
-	import { customPaletteSet } from '../helpers/color_pallette';
-	import { IVizRunning } from '../../interface';
+	import { batchGeoCode } from '../../helpers/api';
+	import { customPaletteSet } from '../../helpers/color_pallette';
+	import { IVizRunning } from '../../../interface';
+	import { trimKeys, trimValues } from '../../helpers/common';
 
 	export const render = renderFn;
 

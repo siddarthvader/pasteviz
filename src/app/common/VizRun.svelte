@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { IVizRunning } from '../../interface';
-	import { viz_running } from '../../stores';
+	import { viz_running, viz_type } from '../../stores';
 
 	let isRunning: boolean = false;
 
@@ -9,9 +9,11 @@
 	});
 
 	function vizRunChange() {
-		viz_running.update((prev) => {
-			return prev === IVizRunning.Idle ? IVizRunning.Running : IVizRunning.Idle;
-		});
+		if ($viz_type) {
+			viz_running.update((prev) => {
+				return prev === IVizRunning.Idle ? IVizRunning.Running : IVizRunning.Idle;
+			});
+		}
 	}
 </script>
 
@@ -23,7 +25,7 @@
 	class:bg-secondary={isRunning}
 >
 	{#if !isRunning}
-		Run
+		Generate
 	{:else}
 		<svg
 			aria-hidden="true"

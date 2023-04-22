@@ -1,19 +1,26 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import Choropleth from '../../app/viz/Choropleth.svelte';
 	import { fuelStoreFromURLParams } from '../../app/helpers/deploy';
-	import { viz_type, viz_values } from '../../stores';
+	import { viz_type } from '../../stores';
+	import { VizComponentMap } from '../../constants';
 
 	const urlParams = new URLSearchParams(window.location.search);
 
-	fuelStoreFromURLParams(urlParams);
-	let renderChoropleth: () => Promise<void>;
+	let renderFn: () => Promise<void>;
 	onMount(() => {
-		renderChoropleth();
+		fuelStoreFromURLParams(urlParams);
+
+		setTimeout(() => {
+			renderFn();
+		}, 1);
 	});
 	// Dispatch an event to respective child component
 </script>
 
 <div class="w-full flex">
-	<Choropleth bind:render={renderChoropleth} />
+	{#each VizComponentMap as viz}
+		{#if $viz_type === viz.value}
+			<svelte:component this={viz.component} bind:render={renderFn} />
+		{/if}
+	{/each}
 </div>

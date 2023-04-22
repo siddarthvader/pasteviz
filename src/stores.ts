@@ -12,6 +12,6 @@ export const viz_running = writable<IVizRunning>(IVizRunning.Idle);
 
 export const features_list = writable<Feature[]>([]);
 
-export const color_pallette = writable<string>(DefaultColorPallette);
+export const color_pallette = writable<string>('customColorBrewer3');
 
-export const opacity_values = writable<number>(DefaultDatalayerOpacity);
+export const opacity_values = writable<number>(69);

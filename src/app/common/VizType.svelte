@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { VizList } from '../../constants';
-	import type { IVizType } from '../../interface';
-	import { viz_type } from '../../stores';
+	import { IVizRunning, type IVizType } from '../../interface';
+	import { viz_running, viz_type } from '../../stores';
 
 	function vizTypeChange(e: Event) {
 		viz_type.set((e.target as HTMLInputElement).value as IVizType);
+		viz_running.set(IVizRunning.Idle);
 	}
 </script>
 
@@ -17,6 +18,7 @@
 			class="block appearance-none w-full bg-bg border border-bgLight text-darkText p-1 rounded leading-tight focus:outline-none focus:bg-bg shadow-sm pr-6 focus:ring-primarySupLight focus:border-primarySupLight"
 			id="viz-type"
 			on:change={vizTypeChange}
+			required
 		>
 			<option value="">Select..</option>
 			{#each VizList as viz}
