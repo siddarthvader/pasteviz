@@ -1,4 +1,5 @@
 import type { Geometry } from 'geojson';
+
 export type geojsonLocal = {
 	iso_name: string;
 	full_name: string;
@@ -20,5 +21,7 @@ export type ColorPaletteOptionProps = {
 export type ColorPaletteSet = {
 	[key: string]: ColorList;
 };
+
+export type IRenderFn = (() => Promise<void>) | undefined;
 
 export type ColorList = Array<string>;

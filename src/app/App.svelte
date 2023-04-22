@@ -7,12 +7,14 @@
 	import VizInput from './common/VizInput.svelte';
 	import VizRun from './common/VizRun.svelte';
 	import VizSelector from './common/VizType.svelte';
-	import EmptyViz from './viz/EmptyViz.svelte';
 
-	let renderChoropleth: () => Promise<void>;
+	import { VizComponentMap } from '../constants';
+	import type { IRenderFn } from './helpers/types';
+
+	let renderFn: IRenderFn;
 	async function vizSubmit() {
 		// Dispatch an event to respective child component
-		renderChoropleth();
+		renderFn && renderFn();
 	}
 
 	console.log($viz_type);
@@ -33,10 +35,10 @@
 		</div>
 		<div class="text-midText text-sm px-1">* mapping of key-data is one to one wrt index</div>
 	</form>
-	{#if $viz_type == ''}
-		<EmptyViz />
-	{/if}
-	{#if $viz_type === 'choropleth'}
-		<Choropleth bind:render={renderChoropleth} />
-	{/if}
+
+	{#each VizComponentMap as viz}
+		{#if $viz_type === viz.value}
+			<svelte:component this={viz.component} bind:render={renderFn} />
+		{/if}
+	{/each}
 </div>

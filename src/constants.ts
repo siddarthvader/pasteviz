@@ -1,13 +1,31 @@
 import type { LatLngBoundsExpression, ControlPosition } from 'leaflet';
-import type { iMapContants, IVizType } from './interface';
+import type { iMapContants, IVizComponent, IVizType } from './interface';
 
 import {
 	PUBLIC_MAPBOX_ACCESS_TOKEN,
 	PUBLIC_MAPBOX_LABEL_LAYER_ID,
 	PUBLIC_MAPBOX_STYLE_ID
 } from '$env/static/public';
+import Choropleth from './app/viz/Choropleth.svelte';
+import BarChart from './app/viz/BarChart.svelte';
+import EmptyViz from './app/viz/EmptyViz.svelte';
 
-const VizList: IVizType[] = ['choropleth'];
+const VizList: IVizType[] = ['choropleth', 'barchart'];
+
+const VizComponentMap: IVizComponent[] = [
+	{
+		component: EmptyViz,
+		value: ''
+	},
+	{
+		component: Choropleth,
+		value: 'choropleth'
+	},
+	{
+		component: BarChart,
+		value: 'barchart'
+	}
+];
 
 const MapboxConfig: Record<string, string> = {
 	accessToken: PUBLIC_MAPBOX_ACCESS_TOKEN,
@@ -57,5 +75,6 @@ export {
 	DefaultColorPallette,
 	DefaultDatalayerOpacity,
 	ScalePositionConstants,
-	API_VARIABLES
+	API_VARIABLES,
+	VizComponentMap
 };
