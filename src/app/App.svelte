@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { viz_type } from '../stores';
+	import { viz_running, viz_type } from '../stores';
 	import ColorPallette from './common/ColorPallette.svelte';
 	import Deploy from './common/Deploy.svelte';
 	import OpacitySlider from './common/OpacitySlider.svelte';
@@ -12,9 +12,9 @@
 
 	let renderFn: IRenderFn;
 	async function vizSubmit() {
-		// Dispatch an event to respective child component
-
-		renderFn && renderFn();
+		if (renderFn) {
+			renderFn();
+		}
 	}
 </script>
 

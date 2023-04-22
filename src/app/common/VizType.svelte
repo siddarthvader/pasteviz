@@ -18,6 +18,7 @@
 			class="block appearance-none w-full bg-bg border border-bgLight text-darkText p-1 rounded leading-tight focus:outline-none focus:bg-bg shadow-sm pr-6 focus:ring-primarySupLight focus:border-primarySupLight"
 			id="viz-type"
 			on:change={vizTypeChange}
+			required
 		>
 			<option value="">Select..</option>
 			{#each VizList as viz}
