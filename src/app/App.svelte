@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { viz_type } from '../stores';
-	import Choropleth from './viz/Choropleth.svelte';
 	import ColorPallette from './common/ColorPallette.svelte';
 	import Deploy from './common/Deploy.svelte';
 	import OpacitySlider from './common/OpacitySlider.svelte';

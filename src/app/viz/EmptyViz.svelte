@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let render;
+	export const render = () => {};
 </script>
 
 <div class="w-full h-[600px] flex items-center justify-center">
