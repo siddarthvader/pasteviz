@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { IVizRunning } from '../../interface';
-	import { viz_keys, viz_running } from '../../stores';
+	import { viz_running } from '../../stores';
 
 	let isRunning: boolean = false;
 
@@ -23,7 +23,7 @@
 	class:bg-secondary={isRunning}
 >
 	{#if !isRunning}
-		Fly
+		Run
 	{:else}
 		<svg
 			aria-hidden="true"

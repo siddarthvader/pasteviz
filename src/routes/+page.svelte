@@ -1,5 +1,6 @@
 <script>
 	import App from '../app/App.svelte';
+	import Footer from '../footer/Footer.svelte';
 	import Header from '../header/Header.svelte';
 </script>
 
@@ -9,3 +10,4 @@
 
 <Header />
 <App />
+<Footer />

@@ -14,7 +14,7 @@
 	}
 </script>
 
-<div class="flex m-auto w-[87%] border-bgLight border-x mt-6">
+<div class="flex m-auto w-[87%] border-bgLight border-x h-[calc(100vh-100px)]">
 	<form
 		on:submit|preventDefault={vizSubmit}
 		class="w-[37%] p-6 flex flex-col space-y-6 items-start border-r border-bgLight"
