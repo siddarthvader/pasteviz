@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { select } from 'd3-selection';
+	import * as d3 from 'd3';
 	import BarChart from './bar_chart';
 	import { prepareOptionsForBarChart } from './helper';
 	import { customPaletteSet } from '$lib/helpers/color_pallette';
@@ -18,8 +18,12 @@
 		const { data, options } = prepareOptionsForBarChart();
 		el = BarChart(data, options);
 
-		removeAllChildren(select('#bar-chart').node());
-		if (el) select('#bar-chart').node().appendChild(el);
+		const target = d3.select('#bar-chart');
+
+		if (target) {
+			removeAllChildren(target.node() as Element);
+		}
+		if (el) (target?.node() as Element).appendChild(el);
 		viz_running.set(IVizRunning.Idle);
 	};
 </script>

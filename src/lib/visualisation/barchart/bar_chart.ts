@@ -52,7 +52,7 @@ export default function BarChart(
 		yLabel, // a label for the y-axis
 		color = 'currentColor' // bar fill color
 	}: BarChartOptions = {}
-) {
+): SVGSVGElement {
 	// Compute values.
 	const X = d3.map(data, x);
 	const Y = d3.map(data, y);
