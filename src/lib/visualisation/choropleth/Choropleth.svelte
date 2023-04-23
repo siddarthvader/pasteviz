@@ -90,6 +90,7 @@
 
 		const fillVal: string = threshold(dtValue);
 
+		console.log(dtValue, $opacity_values);
 		return {
 			fillColor: fillVal,
 			fillOpacity: dtValue ? $opacity_values / 100 : 0,
