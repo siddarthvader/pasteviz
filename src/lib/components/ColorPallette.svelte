@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { color_pallette } from '../../stores';
-	import clickOutside from '../helpers/clickOutside';
+	import { color_pallette } from '$lib/store';
+	import clickOutside from '$lib/helpers/clickOutside';
 
-	import { customPaletteSet } from '../helpers/color_pallette';
+	import { customPaletteSet } from '$lib/helpers/color_pallette';
 	import ColorPalletteRow from './ColorPalletteRow.svelte';
 	let open: boolean = false;
 

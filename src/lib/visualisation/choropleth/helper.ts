@@ -1,5 +1,5 @@
 import type { Map, TileLayer } from 'leaflet';
-import { MapBoundsMax, MapboxConfig, PaneOrder } from '../../../constants';
+import { MapBoundsMax, MapboxConfig, PaneOrder } from '$lib/constants';
 import type { Feature } from 'geojson';
 
 import { format } from 'd3-format';

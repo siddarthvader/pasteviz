@@ -1,10 +1,10 @@
 <script lang="ts">
-	import * as d3 from 'd3';
+	import { select } from 'd3-selection';
 	import BarChart from './bar_chart';
 	import { prepareOptionsForBarChart } from './helper';
-	import { customPaletteSet } from '../../helpers/color_pallette';
-	import { color_pallette, viz_running } from '../../../stores';
-	import { IVizRunning } from '../../../interface';
+	import { customPaletteSet } from '$lib/helpers/color_pallette';
+	import { color_pallette, viz_running } from '$lib/store';
+	import { IVizRunning } from '$lib/interface';
 
 	let el: SVGSVGElement;
 
@@ -18,8 +18,8 @@
 		const { data, options } = prepareOptionsForBarChart();
 		el = BarChart(data, options);
 
-		removeAllChildren(d3.select('#bar-chart').node());
-		if (el) d3.select('#bar-chart').node().appendChild(el);
+		removeAllChildren(select('#bar-chart').node());
+		if (el) select('#bar-chart').node().appendChild(el);
 		viz_running.set(IVizRunning.Idle);
 	};
 </script>

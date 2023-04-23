@@ -7,19 +7,13 @@
 
 	import { onMount } from 'svelte';
 	import { formatNumber, getThreshold, initLegend, initMap } from './helper';
-	import { MapConstants, ScalePositionConstants } from '../../../constants';
-	import {
-		viz_keys,
-		viz_values,
-		color_pallette,
-		viz_running,
-		opacity_values
-	} from '../../../stores';
+	import { MapConstants, ScalePositionConstants } from '$lib/constants';
+	import { viz_keys, viz_values, color_pallette, viz_running, opacity_values } from '$lib/store';
 
-	import { batchGeoCode } from '../../helpers/api';
-	import { customPaletteSet } from '../../helpers/color_pallette';
-	import { IVizRunning } from '../../../interface';
-	import { trimKeys, trimValues } from '../../helpers/common';
+	import { batchGeoCode } from '$lib/helpers/api';
+	import { customPaletteSet } from '$lib/helpers/color_pallette';
+	import { IVizRunning } from '$lib/interface';
+	import { trimKeys, trimValues } from '$lib/helpers/util';
 
 	export const render = renderFn;
 

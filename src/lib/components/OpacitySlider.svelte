@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { opacity_values } from '../../stores';
+	import { opacity_values } from '$lib/store';
 
 	function rangeChange(e) {
 		$opacity_values = e.target.value;

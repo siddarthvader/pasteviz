@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { fuelStoreFromURLParams } from '../../app/helpers/deploy';
-	import { viz_type } from '../../stores';
-	import { VizComponentMap } from '../../constants';
+	import { fuelStoreFromURLParams } from '$lib/helpers/deploy';
+	import { viz_type } from '$lib/store';
+	import { VizComponentMap } from '$lib/constants';
 
 	const urlParams = new URLSearchParams(window.location.search);
 
