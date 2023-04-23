@@ -13,21 +13,27 @@ dependencies:
   '@types/d3-scale':
     specifier: ^4.0.3
     version: 4.0.3
+  '@types/d3-selection':
+    specifier: ^3.0.5
+    version: 3.0.5
   '@types/geojson':
     specifier: ^7946.0.10
     version: 7946.0.10
-  d3:
-    specifier: ^7.8.4
-    version: 7.8.4
   '@vercel/analytics':
     specifier: ^1.0.0
     version: 1.0.0(react@18.2.0)
+  d3:
+    specifier: ^7.8.4
+    version: 7.8.4
   d3-format:
     specifier: ^3.1.0
     version: 3.1.0
   d3-scale:
     specifier: ^4.0.2
     version: 4.0.2
+  d3-selection:
+    specifier: ^3.0.0
+    version: 3.0.0
   leaflet:
     specifier: ^1.9.3
     version: 1.9.3

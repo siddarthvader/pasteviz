@@ -1,14 +1,14 @@
 import type { LatLngBoundsExpression, ControlPosition } from 'leaflet';
-import type { iMapContants, IVizComponent, IVizType } from './interface';
+import type { iMapContants, IVizComponent, IVizType } from '$lib/interface';
 
 import {
 	PUBLIC_MAPBOX_ACCESS_TOKEN,
 	PUBLIC_MAPBOX_LABEL_LAYER_ID,
 	PUBLIC_MAPBOX_STYLE_ID
 } from '$env/static/public';
-import Choropleth from './app/viz/choropleth/Choropleth.svelte';
-import BarChart from './app/viz/barchart/BarChart.svelte';
-import EmptyViz from './app/viz/EmptyViz.svelte';
+import Choropleth from '$lib/visualisation/choropleth/Choropleth.svelte';
+import BarChart from '$lib/visualisation/barchart/BarChart.svelte';
+import EmptyViz from '$lib/visualisation/EmptyViz.svelte';
 
 const VizList: IVizType[] = ['choropleth', 'barchart'];
 

@@ -1,4 +1,4 @@
-import type { ColorPaletteSet } from '../viz/choropleth/types';
+import type { ColorPaletteSet } from '$lib/interface';
 
 export const customPaletteSet: ColorPaletteSet = {
 	customColorBrewer3: ['#764785', '#6b6bc7', '#5799db', '#61b5d1', '#7eceba', '#9fdfaa', '#dfef8f'],

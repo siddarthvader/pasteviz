@@ -1,6 +1,6 @@
-import { DefaultColorPallette } from '../../constants';
-import type { IVizKeys, IVizType, IVizValues } from '../../interface';
-import { viz_type, viz_keys, viz_values, color_pallette, opacity_values } from '../../stores';
+import { DefaultColorPallette } from '$lib/constants';
+import type { IVizKeys, IVizType, IVizValues } from '$lib/interface';
+import { viz_type, viz_keys, viz_values, color_pallette, opacity_values } from '$lib/store';
 
 function fuelStoreFromURLParams(urlParams: URLSearchParams) {
 	console.log("urlParams.get('color')", urlParams.get('color'));

@@ -1,8 +1,8 @@
 // It will take data from Visual Panel and give it to barchart function as provided by observablehq.
 
-import { color_pallette, viz_keys, viz_values } from '../../../stores';
-import { customPaletteSet } from '../../helpers/color_pallette';
-import { trimKeys, trimValues } from '../../helpers/common';
+import { color_pallette, viz_keys, viz_values } from '$lib/store';
+import { customPaletteSet } from '$lib/helpers/color_pallette';
+import { trimKeys, trimValues } from '$lib/helpers/util';
 
 import type { BarChartData, BarChartOptions } from './bar_chart';
 

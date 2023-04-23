@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { VizList } from '../../constants';
-	import { IVizRunning, type IVizType } from '../../interface';
-	import { viz_running, viz_type } from '../../stores';
+	import { VizList } from '$lib/constants';
+	import { IVizRunning, type IVizType } from '$lib/interface';
+	import { viz_running, viz_type } from '$lib/store';
 
 	function vizTypeChange(e: Event) {
 		viz_type.set((e.target as HTMLInputElement).value as IVizType);

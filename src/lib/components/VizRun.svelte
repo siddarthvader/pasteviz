@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { IVizRunning } from '../../interface';
-	import { viz_running, viz_type } from '../../stores';
+	import { IVizRunning } from '$lib/interface';
+	import { viz_running, viz_type } from '$lib/store';
 
 	let isRunning: boolean = false;
 

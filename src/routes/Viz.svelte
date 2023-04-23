@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { viz_running, viz_type } from '../stores';
-	import ColorPallette from './common/ColorPallette.svelte';
-	import Deploy from './common/Deploy.svelte';
-	import OpacitySlider from './common/OpacitySlider.svelte';
-	import VizInput from './common/VizInput.svelte';
-	import VizRun from './common/VizRun.svelte';
-	import VizSelector from './common/VizType.svelte';
+	import { viz_type } from '$lib/store';
+	import ColorPallette from '$lib/components/ColorPallette.svelte';
+	import Deploy from '$lib/components/Deploy.svelte';
+	import OpacitySlider from '$lib/components/OpacitySlider.svelte';
+	import VizInput from '$lib/components/VizInput.svelte';
+	import VizRun from '$lib/components/VizRun.svelte';
+	import VizSelector from '$lib/components/VizSelector.svelte';
 
-	import { VizComponentMap } from '../constants';
-	import type { IRenderFn } from '../interface';
+	import { VizComponentMap } from '$lib/constants';
+	import type { IRenderFn } from '$lib/interface';
 
 	let renderFn: IRenderFn;
 	async function vizSubmit() {

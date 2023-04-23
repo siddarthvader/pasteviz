@@ -1,6 +1,6 @@
-import { API_VARIABLES } from '../../constants';
+import { API_VARIABLES } from '$lib/constants';
 import { api } from './request';
-import type { geojsonLocal } from '../viz/choropleth/types';
+import type { geojsonLocal } from '$lib/visualisation/choropleth/types';
 
 async function batchGeoCode(viz_keys: string[]) {
 	const res = await api.post<string, geojsonLocal[]>(

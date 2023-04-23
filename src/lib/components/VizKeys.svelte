@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { viz_keys } from '../../stores';
+	import { viz_keys } from '$lib/store';
 
 	function vizKeysChange(e: Event) {
 		viz_keys.set((e.target as HTMLInputElement).value);

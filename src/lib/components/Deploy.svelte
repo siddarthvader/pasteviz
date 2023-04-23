@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { color_pallette, opacity_values, viz_keys, viz_type, viz_values } from '../../stores';
+	import { color_pallette, opacity_values, viz_keys, viz_type, viz_values } from '$lib/store';
 
 	let isDeploying: boolean = false;
 

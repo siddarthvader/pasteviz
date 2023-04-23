@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ColorList } from '../viz/choropleth/types';
+	import type { ColorList } from '$lib/interface';
 
 	export let colorPallette: ColorList = [];
 </script>

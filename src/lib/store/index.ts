@@ -1,8 +1,8 @@
-import { writable, type Writable } from 'svelte/store';
-import { IVizRunning, type IVizKeys, type IVizType, type IVizValues } from './interface';
+import { writable } from 'svelte/store';
+import { IVizRunning, type IVizKeys, type IVizType, type IVizValues } from '$lib/interface';
 
 import type { Feature } from 'geojson';
-import { DefaultColorPallette, DefaultDatalayerOpacity } from './constants';
+import { DefaultColorPallette, DefaultDatalayerOpacity } from '../constants';
 
 // Currently everything is their separate state
 export const viz_type = writable<IVizType>('');

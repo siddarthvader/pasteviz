@@ -1,7 +1,7 @@
 import type { LatLngTuple } from 'leaflet';
-import type Choropleth from './app/viz/choropleth/Choropleth.svelte';
-import type BarChart from './app/viz/barchart/BarChart.svelte';
-import type EmptyViz from './app/viz/EmptyViz.svelte';
+import type Choropleth from '$lib/visualisation/choropleth/Choropleth.svelte';
+import type BarChart from '$lib/visualisation/barchart/BarChart.svelte';
+import type EmptyViz from '$lib/visualisation/EmptyViz.svelte';
 
 type IVizType = 'choropleth' | '' | 'barchart';
 
