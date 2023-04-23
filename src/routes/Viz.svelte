@@ -7,8 +7,26 @@
 	import VizRun from '$lib/components/VizRun.svelte';
 	import VizSelector from '$lib/components/VizSelector.svelte';
 
-	import { VizComponentMap } from '$lib/constants';
-	import type { IRenderFn } from '$lib/interface';
+	import type { IRenderFn, IVizComponent } from '$lib/interface';
+
+	import Choropleth from '$lib/visualisation/choropleth/Choropleth.svelte';
+	import BarChart from '$lib/visualisation/barchart/BarChart.svelte';
+	import EmptyViz from '$lib/visualisation/EmptyViz.svelte';
+
+	const VizComponentMap: IVizComponent[] = [
+		{
+			component: EmptyViz,
+			value: ''
+		},
+		{
+			component: Choropleth,
+			value: 'choropleth'
+		},
+		{
+			component: BarChart,
+			value: 'barchart'
+		}
+	];
 
 	let renderFn: IRenderFn;
 	async function vizSubmit() {
@@ -34,9 +52,15 @@
 		<div class="text-midText text-sm px-1">* mapping of key-data is one to one wrt index</div>
 	</form>
 
-	{#each VizComponentMap as viz}
+	<!-- {#each VizComponentMap as viz}
 		{#if $viz_type === viz.value}
 			<svelte:component this={viz.component} bind:render={renderFn} />
 		{/if}
-	{/each}
+	{/each} -->
+	{#if $viz_type === 'choropleth'}
+		<Choropleth bind:render={renderFn} />
+	{/if}
+	{#if $viz_type === 'barchart'}
+		<BarChart bind:render={renderFn} />
+	{/if}
 </div>

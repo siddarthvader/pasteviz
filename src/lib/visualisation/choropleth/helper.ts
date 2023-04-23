@@ -6,6 +6,7 @@ import { format } from 'd3-format';
 import { scaleLinear, type ScaleThreshold, scaleThreshold } from 'd3-scale';
 
 async function initMap(map: Map): Promise<Map> {
+	console.log('initMap running');
 	const L = await import('leaflet');
 
 	map.createPane(PaneOrder.baseMap).style.zIndex = '250'; // basemap pane
