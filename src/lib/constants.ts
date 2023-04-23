@@ -7,7 +7,7 @@ import {
 	PUBLIC_MAPBOX_STYLE_ID
 } from '$env/static/public';
 
-const VizList: IVizType[] = ['choropleth', 'barchart'];
+const VizList: IVizType[] = ['choropleth', 'barchart', 'piechart'];
 
 const MapboxConfig: Record<string, string> = {
 	accessToken: PUBLIC_MAPBOX_ACCESS_TOKEN,

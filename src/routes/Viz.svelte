@@ -12,6 +12,7 @@
 	import Choropleth from '$lib/visualisation/choropleth/Choropleth.svelte';
 	import BarChart from '$lib/visualisation/barchart/BarChart.svelte';
 	import EmptyViz from '$lib/visualisation/EmptyViz.svelte';
+	import PieChart from '$lib/visualisation/piechart/PieChart.svelte';
 
 	const VizComponentMap: IVizComponent[] = [
 		{
@@ -25,11 +26,16 @@
 		{
 			component: BarChart,
 			value: 'barchart'
+		},
+		{
+			component: PieChart,
+			value: 'piechart'
 		}
 	];
 
 	let renderFn: IRenderFn;
 	async function vizSubmit() {
+		console.log('viz sumbit');
 		if (renderFn) {
 			renderFn();
 		}
@@ -52,15 +58,9 @@
 		<div class="text-midText text-sm px-1">* mapping of key-data is one to one wrt index</div>
 	</form>
 
-	<!-- {#each VizComponentMap as viz}
+	{#each VizComponentMap as viz}
 		{#if $viz_type === viz.value}
 			<svelte:component this={viz.component} bind:render={renderFn} />
 		{/if}
-	{/each} -->
-	{#if $viz_type === 'choropleth'}
-		<Choropleth bind:render={renderFn} />
-	{/if}
-	{#if $viz_type === 'barchart'}
-		<BarChart bind:render={renderFn} />
-	{/if}
+	{/each}
 </div>
