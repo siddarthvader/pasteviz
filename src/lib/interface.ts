@@ -2,10 +2,11 @@ import type { LatLngTuple } from 'leaflet';
 import type Choropleth from '$lib/visualisation/choropleth/Choropleth.svelte';
 import type BarChart from '$lib/visualisation/barchart/BarChart.svelte';
 import type EmptyViz from '$lib/visualisation/EmptyViz.svelte';
+import type PieChart from '$lib/visualisation/piechart/pie_chart';
 
-type IVizType = 'choropleth' | '' | 'barchart';
+type IVizType = 'choropleth' | '' | 'barchart' | 'piechart';
 
-type IVizComponentType = typeof Choropleth | typeof BarChart | typeof EmptyViz;
+type IVizComponentType = typeof Choropleth | typeof BarChart | typeof EmptyViz | typeof PieChart;
 type IVizKeys = string;
 type IVizValues = string;
 

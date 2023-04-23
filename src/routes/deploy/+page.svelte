@@ -6,10 +6,11 @@
 	import Choropleth from '$lib/visualisation/choropleth/Choropleth.svelte';
 	import BarChart from '$lib/visualisation/barchart/BarChart.svelte';
 	import EmptyViz from '$lib/visualisation/EmptyViz.svelte';
+	import PieChart from '$lib/visualisation/piechart/PieChart.svelte';
+
 	import type { IVizComponent } from '$lib/interface';
 
 	const urlParams = new URLSearchParams(window.location.search);
-
 	const VizComponentMap: IVizComponent[] = [
 		{
 			component: EmptyViz,
@@ -22,6 +23,10 @@
 		{
 			component: BarChart,
 			value: 'barchart'
+		},
+		{
+			component: PieChart,
+			value: 'piechart'
 		}
 	];
 
