@@ -48,6 +48,21 @@ const API_VARIABLES = {
 	DEV_URL: 'http://localhost:8080'
 };
 
+type Route = {
+	name: string;
+	path: string;
+};
+const Route_List: Route[] = [
+	{
+		name: 'Basic',
+		path: '/'
+	},
+	{
+		name: 'OpenAI (Beta)',
+		path: '/openai'
+	}
+];
+
 export {
 	VizList,
 	MapboxConfig,
@@ -57,5 +72,6 @@ export {
 	DefaultColorPallette,
 	DefaultDatalayerOpacity,
 	ScalePositionConstants,
-	API_VARIABLES
+	API_VARIABLES,
+	Route_List
 };
