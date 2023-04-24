@@ -15,18 +15,19 @@
 	<div class="flex space-x-8 cursor-pointer self-stretch">
 		<ul class="flex flex-wrap -mb-px text-sm font-medium text-center">
 			{#each Route_List as Route}
-				<li
-					class=" border-b-4 border-transparent hover:text-gray-100 hover:border-gray-100 group flex hover:bg-blue-600"
-					class:bg-blue-600={Route.path === $page.route.id}
-					class:border-white={Route.path === $page.route.id}
-				>
-					<a href={Route.path} class="p-4 items-center justify-center flex">
+				<li class="flex items-end">
+					<a
+						href={Route.path}
+						class=" mt-4 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-sm font-bold leading-tight text-white hover:isolate hover:border-transparent hover:bg-white focus:isolate focus:border-transparent hover:text-blue-500"
+						class:bg-white={Route.path === $page.route.id}
+						class:text-blue-500={Route.path === $page.route.id}
+					>
 						{Route.name}
 					</a>
 				</li>
 			{/each}
 		</ul>
-		<a href="https://github.com/siddarthvader/pasteviz" target="_blank" class="self-center">
+		<a href="https://github.com/siddarthvader/pasteviz" target="_blank" class="self-end py-2">
 			<Fa icon={faGithub} size="2x" />
 		</a>
 	</div>
