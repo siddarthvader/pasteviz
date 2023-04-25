@@ -14,3 +14,10 @@
 - Powered by a batch [geocoding API](https://github.com/siddarthvader/geocoding-api)
 - Deploy your viz instantly and use it in any code you like using iframe.
 - Use Your Visualisation in Notion
+- Support for OpenAI API
+- Generate charts using simple ChatGPT prompts and share/embed them instantly.
+
+![UI for openAI support](https://imgur.com/hZUOO6V.png)
+![UI for openAI support](https://imgur.com/VMVlA6P.png)
+![UI for openAI support](https://imgur.com/IMPAP4o.png)
+![UI for openAI support](https://imgur.com/kjDGMPA.png)
