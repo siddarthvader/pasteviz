@@ -18,7 +18,7 @@
 				<li class="flex items-end">
 					<a
 						href={Route.path}
-						class=" mt-4 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-sm font-bold leading-tight text-white hover:isolate hover:border-transparent hover:bg-white focus:isolate focus:border-transparent hover:text-blue-500"
+						class=" mt-4 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-sm font-bold leading-tight hover:isolate hover:border-transparent hover:bg-white focus:isolate focus:border-transparent hover:text-blue-500"
 						class:bg-white={Route.path === $page.route.id}
 						class:text-blue-500={Route.path === $page.route.id}
 					>

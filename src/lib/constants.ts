@@ -4,7 +4,8 @@ import type { iMapContants, IVizType } from '$lib/interface';
 import {
 	PUBLIC_MAPBOX_ACCESS_TOKEN,
 	PUBLIC_MAPBOX_LABEL_LAYER_ID,
-	PUBLIC_MAPBOX_STYLE_ID
+	PUBLIC_MAPBOX_STYLE_ID,
+	PUBLIC_OPENAI_API_KEY
 } from '$env/static/public';
 
 const VizList: IVizType[] = ['choropleth', 'barchart', 'piechart'];
@@ -63,6 +64,10 @@ const Route_List: Route[] = [
 	}
 ];
 
+const OpenAIConfig = {
+	API_KEY: PUBLIC_OPENAI_API_KEY
+};
+
 export {
 	VizList,
 	MapboxConfig,
@@ -73,5 +78,6 @@ export {
 	DefaultDatalayerOpacity,
 	ScalePositionConstants,
 	API_VARIABLES,
-	Route_List
+	Route_List,
+	OpenAIConfig
 };

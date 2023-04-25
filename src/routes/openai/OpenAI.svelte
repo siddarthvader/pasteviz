@@ -1,22 +1,44 @@
 <script lang="ts">
-	import { IVizRunning } from '$lib/interface';
+	import { generateDataFromOpenAI } from '$lib/helpers/api';
+	import { IVizRunning, type IRenderFn } from '$lib/interface';
 
-	import { viz_running, viz_type } from '$lib/store';
+	import {
+		color_pallette,
+		openai_query,
+		viz_keys,
+		viz_running,
+		viz_type,
+		viz_values
+	} from '$lib/store';
+	import BarChart from '$lib/visualisation/barchart/BarChart.svelte';
+	import Viz from '../Viz.svelte';
 
 	let isRunning: boolean = false;
+	let renderFn: IRenderFn;
 
 	viz_running.subscribe(() => {
 		isRunning = $viz_running === IVizRunning.Running;
-
-		console.log('isRunning is...', isRunning);
 	});
 
-	function vizRunChange() {
-		if ($viz_type) {
-			viz_running.update((prev) => {
-				return prev === IVizRunning.Idle ? IVizRunning.Running : IVizRunning.Idle;
-			});
+	async function vizRunChange() {
+		viz_running.set(IVizRunning.Running);
+
+		const data = await generateDataFromOpenAI($openai_query);
+
+		console.log(data);
+
+		viz_type.set('barchart');
+		viz_keys.set(data.map((item) => item.key).toString());
+		viz_values.set(data.map((item) => item.value).toString());
+
+		if (renderFn) {
+			renderFn();
 		}
+		viz_running.set(IVizRunning.Idle);
+	}
+
+	function setOpenAIQuery(e: Event): void {
+		openai_query.set((e.target as HTMLInputElement).value);
 	}
 </script>
 
@@ -32,12 +54,16 @@
 				</div>
 			</div>
 		</div>
+		<div class="flex-1 w-full flex flex-col">
+			<BarChart bind:render={renderFn} />
+		</div>
 
 		<div class="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
 			<div class="relative flex">
 				<input
 					type="text"
 					placeholder="Write your message!"
+					on:change={setOpenAIQuery}
 					class="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3"
 				/>
 				<div class="absolute right-0 items-center inset-y-0 hidden sm:flex">
