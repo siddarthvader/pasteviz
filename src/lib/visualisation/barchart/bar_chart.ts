@@ -40,7 +40,7 @@ export default function BarChart(
 		marginRight = 0, // the right margin, in pixels
 		marginBottom = 30, // the bottom margin, in pixels
 		marginLeft = 40, // the left margin, in pixels
-		width = 640, // the outer width of the chart, in pixels
+		width = 740, // the outer width of the chart, in pixels
 		height = 400, // the outer height of the chart, in pixels
 		xDomain, // an array of (ordinal) x-values
 		xRange = [marginLeft, width - marginRight], // [left, right]
@@ -125,6 +125,7 @@ export default function BarChart(
 
 	svg
 		.append('g')
+		.attr('class', 'p-2')
 		.attr('transform', `translate(0,${height - marginBottom})`)
 		.call(xAxis);
 

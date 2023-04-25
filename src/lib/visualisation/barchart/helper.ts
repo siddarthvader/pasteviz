@@ -20,8 +20,8 @@ function prepareOptionsForBarChart(): { data: BarChartData; options: BarChartOpt
 			x: (d) => d.key,
 			y: (d) => d.value,
 			height: 600,
-			width: 800,
-			marginLeft: 32,
+			width: 900,
+			marginLeft: 64,
 			marginTop: 32,
 			color: customPaletteSet[get(color_pallette)][0]
 		}

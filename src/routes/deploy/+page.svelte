@@ -31,9 +31,8 @@
 	];
 
 	let renderFn: () => Promise<void>;
-	let isRendered = false;
+
 	onMount(() => {
-		isRendered = true;
 		fuelStoreFromURLParams(urlParams);
 		if (renderFn) {
 			setTimeout(() => {

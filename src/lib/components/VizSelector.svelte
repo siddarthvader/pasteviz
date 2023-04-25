@@ -22,7 +22,7 @@
 		>
 			<option value="">Select..</option>
 			{#each VizList as viz}
-				<option value={viz} class="text-darkText">{viz}</option>
+				<option value={viz} class="text-darkText" selected={$viz_type === viz}>{viz}</option>
 			{/each}
 		</select>
 		<div

@@ -1,9 +1,6 @@
 import { writable } from 'svelte/store';
 import { IVizRunning, type IVizKeys, type IVizType, type IVizValues } from '$lib/interface';
 
-import type { Feature } from 'geojson';
-import { DefaultColorPallette, DefaultDatalayerOpacity } from '../constants';
-
 // Currently everything is their separate state
 export const viz_type = writable<IVizType>('');
 export const viz_keys = writable<IVizKeys>('');
@@ -15,3 +12,5 @@ export const features_list = writable<Feature[]>([]);
 export const color_pallette = writable<string>('customColorBrewer3');
 
 export const opacity_values = writable<number>(69);
+
+export const openai_query = writable<string>('');
