@@ -10,6 +10,7 @@
 	import BarChart from '$lib/visualisation/barchart/BarChart.svelte';
 	import EmptyViz from '$lib/visualisation/EmptyViz.svelte';
 	import PieChart from '$lib/visualisation/piechart/PieChart.svelte';
+	import Deploy from '$lib/components/Deploy.svelte';
 
 	const VizComponentMap: IVizComponent[] = [
 		{
@@ -78,10 +79,14 @@
 			</div>
 		</div>
 		<div class="flex-1 w-full flex flex-col h-[800px] overflow-auto">
-			<form class="w-[24%] flex space-x-4 items-end" on:submit|preventDefault={vizRender}>
-				<VizSelector />
-				<VizRun />
-			</form>
+			{#if $viz_keys.length > 0}
+				<form class="w-[40%] flex space-x-4 items-end" on:submit|preventDefault={vizRender}>
+					<VizSelector />
+					<VizRun />
+					<Deploy />
+				</form>
+			{/if}
+
 			{#each VizComponentMap as viz}
 				{#if $viz_type === viz.value}
 					<svelte:component this={viz.component} bind:render={renderFn} />
