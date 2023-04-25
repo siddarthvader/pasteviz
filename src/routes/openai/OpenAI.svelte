@@ -1,17 +1,34 @@
 <script lang="ts">
+	import VizRun from '$lib/components/VizRun.svelte';
+	import VizSelector from '$lib/components/VizSelector.svelte';
 	import { generateDataFromOpenAI } from '$lib/helpers/api';
-	import { IVizRunning, type IRenderFn } from '$lib/interface';
+	import { IVizRunning, type IRenderFn, type IVizComponent } from '$lib/interface';
 
-	import {
-		color_pallette,
-		openai_query,
-		viz_keys,
-		viz_running,
-		viz_type,
-		viz_values
-	} from '$lib/store';
+	import { openai_query, viz_keys, viz_running, viz_type, viz_values } from '$lib/store';
+
+	import Choropleth from '$lib/visualisation/choropleth/Choropleth.svelte';
 	import BarChart from '$lib/visualisation/barchart/BarChart.svelte';
-	import Viz from '../Viz.svelte';
+	import EmptyViz from '$lib/visualisation/EmptyViz.svelte';
+	import PieChart from '$lib/visualisation/piechart/PieChart.svelte';
+
+	const VizComponentMap: IVizComponent[] = [
+		{
+			component: EmptyViz,
+			value: ''
+		},
+		{
+			component: Choropleth,
+			value: 'choropleth'
+		},
+		{
+			component: BarChart,
+			value: 'barchart'
+		},
+		{
+			component: PieChart,
+			value: 'piechart'
+		}
+	];
 
 	let isRunning: boolean = false;
 	let renderFn: IRenderFn;
@@ -31,10 +48,16 @@
 		viz_keys.set(data.map((item) => item.key).toString());
 		viz_values.set(data.map((item) => item.value).toString());
 
+		vizRender();
+
+		viz_running.set(IVizRunning.Idle);
+	}
+
+	function vizRender() {
+		console.log('viz gonna render');
 		if (renderFn) {
 			renderFn();
 		}
-		viz_running.set(IVizRunning.Idle);
 	}
 
 	function setOpenAIQuery(e: Event): void {
@@ -54,8 +77,16 @@
 				</div>
 			</div>
 		</div>
-		<div class="flex-1 w-full flex flex-col">
-			<BarChart bind:render={renderFn} />
+		<div class="flex-1 w-full flex flex-col h-[800px] overflow-auto">
+			<form class="w-[24%] flex space-x-4 items-end" on:submit|preventDefault={vizRender}>
+				<VizSelector />
+				<VizRun />
+			</form>
+			{#each VizComponentMap as viz}
+				{#if $viz_type === viz.value}
+					<svelte:component this={viz.component} bind:render={renderFn} />
+				{/if}
+			{/each}
 		</div>
 
 		<div class="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
