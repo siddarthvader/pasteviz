@@ -4,9 +4,6 @@
 	import OpenAi from './OpenAI.svelte';
 </script>
 
-<svelte:head>
-	<title>pasteviz: viz on fly you fools!!!</title>
-</svelte:head>
 
 <Header />
 <OpenAi />
